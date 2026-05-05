@@ -4,7 +4,7 @@ function CTA() {
 
       {/* LEFT DECORATIVE SHAPE */}
       <div className="absolute left-0 top-0 opacity-20">
-        <div className="w-[300px] h-[300px] border-[20px] border-blue-300 rounded-[40%]">
+        <div className="w-300px h-300px border-20px border-blue-300 rounded-[40%]">
         </div>
       </div>
 

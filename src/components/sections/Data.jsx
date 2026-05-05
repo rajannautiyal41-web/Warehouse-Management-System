@@ -27,7 +27,7 @@ function Data() {
         {/* RIGHT ILLUSTRATION */}
         <div className="flex justify-center">
 
-          <div className="relative w-full max-w-xl h-[350px]">
+          <div className="relative w-full max-w-xl h-350px">
 
             {/* CENTER BOX */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 border-2 border-dashed border-blue-300 rounded-xl flex items-center justify-center bg-white shadow-sm">
