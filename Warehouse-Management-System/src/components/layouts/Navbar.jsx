@@ -1,3 +1,4 @@
+import { ChevronDown } from "lucide-react";
 function Navbar() {
   return (
     <nav className="w-full bg-[#043873]">
@@ -9,25 +10,41 @@ function Navbar() {
         </div>
 
         {/* Navigation Links */}
-        <div className="hidden md:flex items-center gap-8 text-white text-sm">
+<div className="hidden md:flex items-center gap-8 text-white text-sm">
 
-          <a href="#" className="hover:text-blue-200">
-            Products
-          </a>
+  <a
+    href="#"
+    className="flex items-center gap-1 hover:text-blue-200"
+  >
+    Products
+    <ChevronDown size={16} />
+  </a>
 
-          <a href="#" className="hover:text-blue-200">
-            Solutions
-          </a>
+  <a
+    href="#"
+    className="flex items-center gap-1 hover:text-blue-200"
+  >
+    Solutions
+    <ChevronDown size={16} />
+  </a>
 
-          <a href="#" className="hover:text-blue-200">
-            Resources
-          </a>
+  <a
+    href="#"
+    className="flex items-center gap-1 hover:text-blue-200"
+  >
+    Resources
+    <ChevronDown size={16} />
+  </a>
 
-          <a href="#" className="hover:text-blue-200">
-            Pricing
-          </a>
+  <a
+    href="#"
+    className="flex items-center gap-1 hover:text-blue-200"
+  >
+    Pricing
+    <ChevronDown size={16} />
+  </a>
 
-        </div>
+</div>
 
         {/* Buttons */}
         <div className="flex items-center gap-4">

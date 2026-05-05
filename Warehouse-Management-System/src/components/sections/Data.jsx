@@ -7,9 +7,21 @@ function Data() {
         {/* LEFT CONTENT */}
         <div>
 
-          <h2 className="text-[#212529] text-5xl md:text-6xl font-bold leading-tight">
-            100% your data
-          </h2>
+          <h2 className="text-[#212529] text-5xl md:text-6xl font-bold leading-tight relative inline-block">
+
+  100% your
+
+  <span className="relative inline-block ml-3">
+
+    data
+
+    {/* Yellow Highlight */}
+    <span className="absolute left-0 bottom-1 w-full h-3 bg-[#FFE492] -z-10 rounded-sm">
+    </span>
+
+  </span>
+
+</h2>
 
           <p className="text-gray-600 mt-6 leading-8 max-w-lg">
             The app is open source and your notes are saved to an open format,
