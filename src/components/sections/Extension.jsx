@@ -25,7 +25,7 @@ function Extension() {
         {/* RIGHT CONTENT */}
         <div className="flex justify-center">
 
-          <div className="w-full max-w-xl h-400px bg-[#C4DEFD] rounded-sm">
+          <div className="w-full max-w-xl h-[400px] bg-[#C4DEFD] rounded-sm">
           </div>
 
         </div>

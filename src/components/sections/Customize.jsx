@@ -7,7 +7,7 @@ function Customize() {
         {/* LEFT IMAGE */}
         <div className="flex justify-center">
 
-          <div className="w-full max-w-xl h-400px bg-[#C4DEFD] rounded-sm">
+          <div className="w-full max-w-xl h-[400px] bg-[#C4DEFD] rounded-sm">
           </div>
 
         </div>
@@ -27,7 +27,7 @@ function Customize() {
             and plugins using the Extension API.
           </p>
 
-          <button className="mt-8 bg-[#4F9CF9] hover:bg-blue-500 transition-all duration-300 text-white px-6 py-3 rounded-lg font-medium">
+          <button className="mt-8 bg-[#4F9CF9] hover:bg-blue-500 transition-all duration-300 text-white px-6 py-3 rounded-lg font-medium cursor-pointer">
             Let's Go →
           </button>
 

@@ -24,7 +24,7 @@ function CTA() {
         </p>
 
         {/* BUTTON */}
-        <button className="mt-10 bg-[#4F9CF9] hover:bg-blue-500 transition-all duration-300 text-white px-7 py-4 rounded-lg font-medium">
+        <button className="mt-10 bg-[#4F9CF9] hover:bg-blue-500 transition-all duration-300 text-white px-7 py-4 rounded-lg font-medium cursor-pointer">
           Try Taskey →
         </button>
 
