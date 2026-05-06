@@ -1,9 +1,5 @@
-<<<<<<< HEAD:src/components/Pages/LoginPage/LoginPage.jsx
-import WMSlogo from '../../../assets/WMSlogo.svg'
-=======
 import { Link } from 'react-router-dom';
 import WMSlogo from '../../assets/WMSlogo.svg'
->>>>>>> a6923c9fe2d6a399b83b7d243262117494bd880d:src/pages/LoginPage/LoginPage.jsx
 function LoginPage() {
     return (
         <section className="min-h-screen bg-[#f0f1f3] flex items-center justify-center px-4">
