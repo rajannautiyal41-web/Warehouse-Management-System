@@ -1,5 +1,5 @@
 import { ChevronDown, Menu } from "lucide-react";
-
+import LoginPage from '../Pages/LoginPage/LoginPage'
 function Navbar() {
   return (
     <nav className="w-full bg-[#043873]">

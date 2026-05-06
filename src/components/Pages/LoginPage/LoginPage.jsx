@@ -1,4 +1,4 @@
-import WMSlogo from '../../assets/WMSlogo.svg'
+import WMSlogo from '../../../assets/WMSlogo.svg'
 function LoginPage() {
   return (
     <section className="min-h-screen bg-[#f0f1f3] flex items-center justify-center px-4">
