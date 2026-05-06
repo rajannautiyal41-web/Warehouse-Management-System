@@ -19,7 +19,7 @@ function Project() {
             Take photos with the mobile app and save them to a note.
           </p>
 
-          <button className="mt-8 bg-[#4F9CF9] hover:bg-blue-500 transition-all duration-300 text-white px-6 py-3 rounded-lg font-medium">
+          <button className="mt-8 bg-[#4F9CF9] hover:bg-blue-500 transition-all duration-300 text-white px-6 py-3 rounded-lg font-medium cursor-pointer">
             Get Started →
           </button>
 
@@ -28,7 +28,7 @@ function Project() {
         {/* RIGHT CONTENT */}
         <div className="flex justify-center">
 
-          <div className="w-full max-w-xl h-400px bg-[#C4DEFD]">
+          <div className="w-full max-w-xl h-[400px] bg-[#C4DEFD]">
           </div>
 
         </div>
