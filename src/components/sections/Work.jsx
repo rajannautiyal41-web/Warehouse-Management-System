@@ -19,7 +19,7 @@ export default function Work() {
         <div className="relative flex justify-center items-center">
 
           {/* Orbit circle */}
-          <div className="absolute w-[320px] h-320px border border-dashed border-white/40 rounded-full"></div>
+          <div className="absolute w-[320px] h-[320px] border border-dashed border-white/40 rounded-full"></div>
 
           {/* Center circle */}
           <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center text-[#0F3D75] font-bold text-xl shadow-lg">

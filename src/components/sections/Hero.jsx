@@ -27,8 +27,9 @@ function Hero() {
         {/* RIGHT CONTENT */}
         <div className="flex justify-center">
 
-          <div className="w-full max-w-2xl h-400px bg-[#C4DEFD] rounded-sm shadow-xl">
+          <div className="w-full max-w-2xl h-[400px] bg-[#C4DEFD] rounded-sm shadow-xl">
           </div>
+          
 
         </div>
 
