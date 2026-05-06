@@ -5,19 +5,26 @@ export default function Footer() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="bg-[#043873] border-t border-white/10">
+    <div className="bg-[#043873] border-t border-white/10 text-white">
       
       {/* MAIN CONTAINER */}
-      <div className="max-w-[1100px] mx-auto px-6 py-4 flex items-center gap-12">
-        
+      <div className="
+        max-w-[1400px] mx-auto px-6 py-4
+        flex flex-wrap items-center justify-between gap-4
+      ">
+
         {/* LEFT SIDE */}
-        <div className="flex items-center gap-6 text-[13px] text-[#B9C6D2]">
+        <div className="
+          flex flex-wrap items-center gap-3
+          text-[11px] sm:text-[12px] md:text-[13px]
+          text-[#B9C6D2]
+        ">
 
           {/* LANGUAGE */}
           <div className="relative">
             <button
               onClick={() => setOpen(!open)}
-              className="flex items-center gap-1.5 hover:text-white"
+              className="flex items-center gap-1.5 hover:text-white whitespace-nowrap"
             >
               {/* Globe Icon */}
               <svg
@@ -46,7 +53,7 @@ export default function Footer() {
               </svg>
             </button>
 
-            {/* DROPDOWN (UPWARD SMALL) */}
+            {/* DROPDOWN */}
             {open && (
               <div className="absolute bottom-7 left-0 bg-white text-black rounded shadow text-[12px] w-20">
                 <div className="px-3 py-1 hover:bg-gray-100 cursor-pointer">
@@ -59,23 +66,27 @@ export default function Footer() {
             )}
           </div>
 
-          <span className="hover:text-white cursor-pointer">
+          <span className="hover:text-white cursor-pointer whitespace-nowrap">
             Terms & privacy
           </span>
-          <span className="hover:text-white cursor-pointer">
+          <span className="hover:text-white cursor-pointer whitespace-nowrap">
             Security
           </span>
-          <span className="hover:text-white cursor-pointer">
+          <span className="hover:text-white cursor-pointer whitespace-nowrap">
             Status
           </span>
 
-          <span className="text-[#8EA3B7]">
+          <span className="text-[#8EA3B7] whitespace-nowrap">
             ©2021 Whitepace LLC.
           </span>
         </div>
 
-        {/* RIGHT SIDE (CLOSE, NOT EXTREME RIGHT) */}
-        <div className="flex items-center gap-5 text-[#B9C6D2] ml-100">
+        {/* RIGHT SIDE (ICONS) */}
+        <div className="
+          flex items-center gap-5 text-[#B9C6D2]
+          w-full sm:w-auto
+          justify-start sm:justify-end
+        ">
           <FaFacebookF className="text-[13px] hover:text-white cursor-pointer" />
           <FaTwitter className="text-[13px] hover:text-white cursor-pointer" />
           <FaLinkedinIn className="text-[13px] hover:text-white cursor-pointer" />
