@@ -83,33 +83,6 @@ function Work() {
               everywhere you are
             </h2>
 
-            {/* UNDERLINE */}
-            <span
-              className="
-                absolute
-
-                left-[110px]
-                bottom-[4px]
-
-                sm:left-[150px]
-                md:left-[230px]
-                lg:left-[290px]
-                xl:left-[350px]
-
-                w-[120px]
-                sm:w-[160px]
-                md:w-[220px]
-                lg:w-[260px]
-
-                h-[10px]
-                md:h-[14px]
-
-                bg-[#4F9CF9]
-
-                rounded-full
-                opacity-90
-              "
-            ></span>
 
           </div>
 
