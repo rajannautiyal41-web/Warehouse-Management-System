@@ -94,6 +94,7 @@ export default function WhitepaceSection() {
           <h2 className="text-white font-semibold mb-2">whitepace</h2>
           <p className="leading-relaxed">
             whitepace was created for the new ways we live and work.
+            We make a better workspace around the world
           </p>
         </div>
 

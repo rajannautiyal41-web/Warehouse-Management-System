@@ -306,8 +306,9 @@ function WorkTogether() {
                   relative
                   z-10
 
-                  text-[36px]
-                  leading-[44px]
+          <p className="mt-6 text-gray-600 leading-8 max-w-lg">
+            With whitepace,share your notes with your colleaues and collaborate on them. You can also publish a note to the internet and share the URL with others.
+          </p>
 
                   sm:text-[42px]
                   sm:leading-[52px]

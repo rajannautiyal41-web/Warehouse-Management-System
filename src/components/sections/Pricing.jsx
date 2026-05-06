@@ -14,10 +14,10 @@ function Pricing() {
       features: [
         "Sync unlimited devices",
         "10 GB monthly uploads",
-        "200 MB max. note size",
+         "200 MB max. note size",
         "Customize Home dashboard and access extra widgets",
         "Connect primary Google Calendar account",
-        "Add due dates, reminders, and notifications to your tasks",
+        "Add due dates,reminders,and notifications to your tasks",
       ],
     },
 
@@ -32,7 +32,7 @@ function Pricing() {
         "200 MB max. note size",
         "Customize Home dashboard and access extra widgets",
         "Connect primary Google Calendar account",
-        "Add due dates, reminders, and notifications to your tasks",
+        "Add due dates,reminders,and notifications to your tasks",
       ],
     },
 
@@ -44,10 +44,10 @@ function Pricing() {
       features: [
         "Sync unlimited devices",
         "10 GB monthly uploads",
-        "200 MB max. note size",
+         "200 MB max. note size",
         "Customize Home dashboard and access extra widgets",
         "Connect primary Google Calendar account",
-        "Add due dates, reminders, and notifications to your tasks",
+        "Add due dates,reminders,and notifications to your tasks",
       ],
     },
   ];
@@ -94,76 +94,9 @@ function Pricing() {
 
           <div className="relative inline-block">
 
-            <h2
-              className="
-                relative
-                z-10
-
-                text-[#212529]
-                font-bold
-                tracking-[-0.02em]
-
-                text-[36px]
-                leading-[44px]
-
-                sm:text-[42px]
-                sm:leading-[52px]
-
-                md:text-[54px]
-                md:leading-[65px]
-
-                lg:text-[58px]
-                lg:leading-[70px]
-
-                xl:text-[68px]
-                xl:leading-[82px]
-              "
-            >
-              Choose Your Plan
-            </h2>
-
-            <span
-              className="
-                absolute
-                left-1/2
-                -translate-x-1/2
-                bottom-1
-
-                w-[140px]
-                md:w-[180px]
-                lg:w-[220px]
-
-                h-[8px]
-                md:h-[12px]
-
-                bg-[#FFE492]
-                rounded-full
-                z-0
-              "
-            ></span>
-
-          </div>
-
-          <p
-            className="
-              mt-6
-
-              text-[#4F4F4F]
-
-              text-[14px]
-              leading-[24px]
-
-              md:text-[16px]
-              md:leading-[30px]
-
-              max-w-[850px]
-
-              mx-auto
-            "
-          >
-            Whether you want to get organized, keep your personal
-            life on track, or boost workplace productivity,
-            Evernote has the right plan for you.
+          <p className="mt-6 text-gray-600 max-w-3xl mx-auto leading-8">
+            Whether you want to get organized, keep your personal life on track,
+            or boost workplace productivity, Evernote has the right plan for you.
           </p>
 
         </div>
