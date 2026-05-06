@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 function Hero() {
   return (
     <section className="w-full bg-[#043873] overflow-hidden">
@@ -103,6 +104,11 @@ function Hero() {
             </p>
 
             {/* BUTTON */}
+            <div className="fixed top-5 right-5">
+  <Link to="/signup" className="bg-blue-500 text-white px-4 py-2 rounded">
+    Signup
+  </Link>
+</div>
             <button
               className="
                 mt-8
