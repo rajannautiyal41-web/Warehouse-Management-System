@@ -50,13 +50,13 @@ function Navbar() {
         {/* Buttons */}
         <div className="flex items-center gap-4">
 
-          <button className="bg-[#FFE492] text-black px-5 py-2 rounded-lg text-sm font-medium cursor-pointer">
-            Login
-          </button>
+          <button className="bg-[#FFE492] text-black px-5 py-2 rounded-lg text-sm font-medium cursor-pointer hover:bg-[#ffd86b] ">
+  Login
+</button>
 
-          <button className="bg-[#4F9CF9] text-white px-5 py-2 rounded-lg text-sm font-medium cursor-pointer">
-            Try Whitepace free →
-          </button>
+<button className="bg-[#4F9CF9] text-white px-5 py-2 rounded-lg text-sm font-medium cursor-pointer hover:bg-[#3388f5] ">
+  Try Whitepace free →
+</button>
 
         </div>
 

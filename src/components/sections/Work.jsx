@@ -67,7 +67,7 @@ export default function Work() {
             project success.
           </p>
 
-          <button className="bg-[#4F9CF9] hover:bg-[#3b82f6] px-7 py-3 rounded-lg text-sm font-medium flex items-center gap-2 mx-auto md:mx-0">
+          <button className="bg-[#4F9CF9] hover:bg-[#3b82f6] px-7 py-3 rounded-lg text-sm font-medium flex items-center gap-2 mx-auto md:mx-0 cursor-pointer">
             Read more →
           </button>
         </div>

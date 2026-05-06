@@ -29,7 +29,7 @@ function WorkTogether() {
             Share warehouse data, inventory updates, and operational workflows.
           </p>
 
-          <button className="mt-8 bg-[#4F9CF9] hover:bg-blue-500 transition-all duration-300 text-white px-6 py-3 rounded-lg font-medium">
+          <button className="mt-8 bg-[#4F9CF9] hover:bg-blue-500 transition-all duration-300 text-white px-6 py-3 rounded-lg font-medium cursor-pointer">
             Try it now →
           </button>
 

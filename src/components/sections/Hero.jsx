@@ -18,7 +18,7 @@ function Hero() {
             to collaborate, plan, analyze and manage everyday tasks.
           </p>
 
-          <button className="mt-8 bg-[#4F9CF9] hover:bg-blue-500 transition-all duration-300 text-white px-7 py-4 rounded-lg font-medium shadow-lg">
+          <button className="mt-8 bg-[#4F9CF9] hover:bg-blue-500 transition-all duration-300 text-white px-7 py-4 rounded-lg font-medium shadow-lg cursor-pointer">
             Try Whitepace free →
           </button>
 

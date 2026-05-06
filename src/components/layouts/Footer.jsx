@@ -3,15 +3,15 @@ import React from "react";
 function Footer() {
   return (
     <div className="bg-[#0e3a6d] border-t border-[#2a5585] px-6 py-3 text-gray-400 text-[11px] font-sans">
-      
+
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
-        
+
         {/* Left Side */}
         <div className="flex items-center gap-6 mb-2 md:mb-0">
-          
+
           {/* Language */}
           <span className="flex items-center gap-1 cursor-pointer hover:text-white opacity-90">
-            
+
             {/* Globe SVG */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -51,12 +51,15 @@ function Footer() {
           <span className="cursor-pointer hover:text-white">
             Status
           </span>
+          <span className="cursor-pointer hover:text-white">
+            ©2021 Whitepace LLC.
+          </span>
         </div>
 
         {/* Right Side */}
         <div className="flex items-center gap-6">
-          
-          <span>©2021 Whitepace LLC.</span>
+
+
 
           {/* Social Icons */}
           <div className="flex gap-4">
