@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import SignUp from './pages/SignupPage/SignUp'
-
+import WMSNavbar from "./pages/Navbar/WMSNavbar"
 import "./App.css";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 import Footer from "./components/layouts/Footer";
 import Testimonials from "./components/sections/Testimonials";
@@ -61,7 +62,10 @@ function App() {
           path="/forgot-password"
           element={<ForgotPassword />}
         />
-
+        <Route
+          path="/dashboard"
+          element={<Dashboard />}
+        />
       </Routes>
 
     </BrowserRouter>
