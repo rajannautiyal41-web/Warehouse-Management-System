@@ -12,7 +12,7 @@ import CTA from './components/sections/CTA'
 import Data from './components/sections/Data'
 import Navbar from './components/layouts/Navbar'
 import Work from './components/sections/Work'
-import Sponsors from './components/sections/sponsors'
+import Sponsors from './components/sections/Sponsors'
  
 function App() {
  
@@ -37,3 +37,5 @@ function App() {
 }
  
 export default App
+ 
+ 

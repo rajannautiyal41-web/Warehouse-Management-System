@@ -16,7 +16,7 @@ export default function WhitepaceSection() {
           Add your whole team as your needs grow.
         </p>
 
-        <button className="mt-6 bg-[#4f9cf9] hover:bg-[#3b82f6] text-white px-6 py-2.5 rounded-md text-sm font-medium flex items-center gap-2 mx-auto">
+        <button className="mt-6 bg-[#4f9cf9] hover:bg-[#3b82f6] text-white px-6 py-2.5 rounded-md text-sm font-medium flex items-center gap-2 mx-auto cursor-pointer">
           Try Taskey free
 
           {/* Arrow SVG */}
@@ -125,11 +125,11 @@ export default function WhitepaceSection() {
         </div>
 
         <div>
-          <h3 className="text-white font-medium mb-2">Try It Today</h3>
+          <h3 className="text-white font-medium mb-2 ">Try It Today</h3>
           <p className="mb-3">
             Get started for free.
           </p>
-          <button className="bg-[#4f9cf9] px-4 py-2 rounded-md text-xs flex items-center gap-2">
+          <button className="text-white bg-[#4f9cf9] px-4 py-2 rounded-md text-xs flex items-center gap-2 cursor-pointer hover:bg-[#3388f5]">
             Start today
             <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none">
               <path stroke="currentColor" strokeWidth="2" d="M5 12h14M13 6l6 6-6 6"/>

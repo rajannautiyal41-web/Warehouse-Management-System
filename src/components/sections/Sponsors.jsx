@@ -1,53 +1,150 @@
-import React from "react";
+import { FaApple, FaGoogle } from "react-icons/fa";
+import { SiMicrosoft, SiSlack } from "react-icons/si";
 
-export default function Sponsors() {
+function Sponsors() {
   return (
-    <div className="bg-[#F5F5F5] py-24 px-6 text-center font-sans">
-      
-      {/* Heading */}
-      <div className="relative inline-block mb-20">
-        <h2 className="text-[44px] md:text-[52px] font-bold text-[#2B2B2B] relative z-10">
-          Our sponsors
-        </h2>
+    <section className="w-full bg-white overflow-hidden">
 
-        {/* Yellow brush underline */}
-        <span className="absolute left-1/2 -translate-x-1/2 bottom-2 w-220px h-12px bg-[#F4D35E] rounded-full z-0"></span>
+      <div
+        className="
+          max-w-[1920px]
+          mx-auto
+
+          px-6
+          md:px-10
+          lg:px-16
+          xl:px-24
+
+          py-16
+          md:py-20
+          lg:py-24
+        "
+      >
+
+        {/* HEADING */}
+        <div className="text-center">
+
+          <div className="relative inline-block">
+
+            <h2
+              className="
+                relative
+                z-10
+
+                text-[#212529]
+                font-bold
+
+                text-[34px]
+                leading-[42px]
+
+                md:text-[44px]
+                md:leading-[52px]
+
+                lg:text-[60px]
+                lg:leading-[72px]
+              "
+            >
+              Our sponsors
+            </h2>
+
+            {/* UNDERLINE */}
+            <span
+              className="
+                absolute
+                left-1/2
+                -translate-x-1/2
+                bottom-1
+
+                w-[120px]
+                md:w-[150px]
+                lg:w-[180px]
+
+                h-[8px]
+                md:h-[10px]
+
+                bg-[#FFE492]
+                rounded-full
+                z-0
+              "
+            ></span>
+
+          </div>
+
+        </div>
+
+        {/* LOGOS */}
+        <div
+          className="
+            mt-14
+            md:mt-16
+            lg:mt-20
+
+            flex
+            flex-col
+            lg:flex-row
+
+            items-center
+            justify-center
+
+            gap-12
+            md:gap-14
+            lg:gap-24
+            xl:gap-32
+          "
+        >
+
+          {/* APPLE */}
+          <div className="text-black text-[52px] md:text-[64px] lg:text-[72px]">
+            <FaApple />
+          </div>
+
+          {/* MICROSOFT */}
+          <div className="flex items-center gap-3">
+            <SiMicrosoft className="text-[42px] md:text-[50px] lg:text-[58px] text-[#7FBA00]" />
+
+            <span
+              className="
+                text-[#6B6B6B]
+                font-semibold
+
+                text-[28px]
+                md:text-[34px]
+                lg:text-[40px]
+              "
+            >
+              Microsoft
+            </span>
+          </div>
+
+          {/* SLACK */}
+          <div className="flex items-center gap-3">
+            <SiSlack className="text-[42px] md:text-[50px] lg:text-[58px] text-[#4A154B]" />
+
+            <span
+              className="
+                text-black
+                font-bold
+
+                text-[28px]
+                md:text-[34px]
+                lg:text-[40px]
+              "
+            >
+              slack
+            </span>
+          </div>
+
+          {/* GOOGLE */}
+          <div className="text-[52px] md:text-[64px] lg:text-[72px]">
+            <FaGoogle className="text-[#4285F4]" />
+          </div>
+
+        </div>
+
       </div>
 
-      {/* Logos */}
-      <div className="flex justify-center items-center gap-20 md:gap-28 flex-wrap">
-
-        {/* Apple */}
-        <div className="w-70px h-70px flex items-center justify-center">
-          {/* 🔽 PASTE APPLE SVG HERE */}
-        </div>
-
-        {/* Microsoft */}
-        <div className="flex items-center gap-4">
-          <div className="w-36px h-36px">
-            {/* 🔽 MICROSOFT ICON SVG */}
-          </div>
-          <div className="w-150px h-40px">
-            {/* 🔽 MICROSOFT TEXT SVG */}
-          </div>
-        </div>
-
-        {/* Slack */}
-        <div className="flex items-center gap-4">
-          <div className="w-36px h-36px">
-            {/* 🔽 SLACK ICON SVG */}
-          </div>
-          <div className="w-110px h-40px">
-            {/* 🔽 SLACK TEXT SVG */}
-          </div>
-        </div>
-
-        {/* Google */}
-        <div className="w-150px h-50px flex items-center justify-center">
-          {/* 🔽 GOOGLE SVG */}
-        </div>
-
-      </div>
-    </div>
+    </section>
   );
 }
+
+export default Sponsors;
