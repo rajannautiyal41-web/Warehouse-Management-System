@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import SignUp from './pages/SignupPage/SignUp'
 
 import "./App.css";
 
@@ -17,6 +18,7 @@ import Data from "./components/sections/Data";
 import Navbar from "./components/layouts/Navbar";
 import Work from "./components/sections/Work";
 import Sponsors from "./components/sections/Sponsors";
+import ForgotPassword from './pages/ForgetPassword/ForgetPassword'
 
 function Home() {
   return (
@@ -50,6 +52,14 @@ function App() {
         <Route
           path="/login"
           element={<LoginPage />}
+        />
+        <Route
+          path="/signup"
+          element={<SignUp />}
+        />
+        <Route
+          path="/forgot-password"
+          element={<ForgotPassword />}
         />
 
       </Routes>
