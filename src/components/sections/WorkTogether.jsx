@@ -25,8 +25,7 @@ function WorkTogether() {
           </h2>
 
           <p className="mt-6 text-gray-600 leading-8 max-w-lg">
-            Collaborate with your colleagues and teams in real-time.
-            Share warehouse data, inventory updates, and operational workflows.
+            With whitepace,share your notes with your colleaues and collaborate on them. You can also publish a note to the internet and share the URL with others.
           </p>
 
           <button className="mt-8 bg-[#4F9CF9] hover:bg-blue-500 transition-all duration-300 text-white px-6 py-3 rounded-lg font-medium cursor-pointer">

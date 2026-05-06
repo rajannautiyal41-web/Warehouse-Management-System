@@ -10,9 +10,10 @@ function Pricing() {
       features: [
         "Sync unlimited devices",
         "10 GB monthly uploads",
-        "200 MB max. note size",
-        "Customize dashboard",
-        "Connect Google Calendar",
+         "200 MB max. note size",
+        "Customize Home dashboard and access extra widgets",
+        "Connect primary Google Calendar account",
+        "Add due dates,reminders,and notifications to your tasks",
       ],
     },
 
@@ -25,8 +26,9 @@ function Pricing() {
         "Sync unlimited devices",
         "10 GB monthly uploads",
         "200 MB max. note size",
-        "Customize dashboard",
-        "Connect Google Calendar",
+        "Customize Home dashboard and access extra widgets",
+        "Connect primary Google Calendar account",
+        "Add due dates,reminders,and notifications to your tasks",
       ],
     },
 
@@ -38,9 +40,10 @@ function Pricing() {
       features: [
         "Sync unlimited devices",
         "10 GB monthly uploads",
-        "200 MB max. note size",
-        "Customize dashboard",
-        "Connect Google Calendar",
+         "200 MB max. note size",
+        "Customize Home dashboard and access extra widgets",
+        "Connect primary Google Calendar account",
+        "Add due dates,reminders,and notifications to your tasks",
       ],
     },
   ];
@@ -59,7 +62,7 @@ function Pricing() {
 
           <p className="mt-6 text-gray-600 max-w-3xl mx-auto leading-8">
             Whether you want to get organized, keep your personal life on track,
-            or boost workplace productivity, we have the right plan for you.
+            or boost workplace productivity, Evernote has the right plan for you.
           </p>
 
         </div>
