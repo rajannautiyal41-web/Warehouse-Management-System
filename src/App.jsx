@@ -2,6 +2,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import SignUp from './pages/SignupPage/SignUp'
 import WMSNavbar from "./pages/Navbar/WMSNavbar"
+import Dashboard from "./pages/Dashboard";
+import CollapseDashboard from './pages/CollapseDashboard'
+
 import "./App.css";
 import Dashboard from "./pages/Dashboard/Dashboard";
 
@@ -66,7 +69,10 @@ function App() {
           path="/dashboard"
           element={<Dashboard />}
         />
+        <Route path ='/CollapseDashboard' element={<CollapseDashboard/>}/>
+ <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
+     
 
     </BrowserRouter>
   );

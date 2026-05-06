@@ -1,5 +1,6 @@
 import { ChevronDown, Menu } from "lucide-react";
 import { Link } from "react-router-dom";
+import LoginPage from '../../pages/LoginPage/LoginPage'
 function Navbar() {
   return (
     <nav className="w-full bg-[#043873]">
@@ -89,6 +90,7 @@ function Navbar() {
 
             {/* LOGIN BUTTON */}
             <Link to="/login" className="hidden
+           <Link to="/login" className="hidden
                 lg:block
                 bg-[#FFE492]
                 text-black
@@ -103,6 +105,7 @@ function Navbar() {
                 cursor-pointer">
                         Log in
                       </Link>
+ 
 
             {/* TRY BUTTON */}
             <button

@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import LogoWMS from '../../assets/LogoWMS.svg';
-
+import LogoWMS from "../../assets/LogoWMS.svg";
+ 
 function Signup() {
   return (
     <div className="min-h-screen bg-[#F0F1F3] flex items-center justify-center">
-      
+     
       <div className="w-full max-w-md px-6">
-        
+       
         {/* LOGO */}
         <div className="flex justify-center mb-6">
           <img
@@ -15,7 +15,7 @@ function Signup() {
             className="w-[120px] sm:w-[140px] h-auto object-contain"
           />
         </div>
-
+ 
         {/* TITLE */}
         <h2 className="text-center  
               text-[34px]
@@ -23,10 +23,10 @@ function Signup() {
   text-2xl font-bold text-gray-800 mb-8">
           Create an account
         </h2>
-
+ 
         {/* FORM */}
         <form className="space-y-5">
-
+ 
           {/* USERNAME */}
           <div>
             <label className="block text-sm text-gray-700 mb-2">
@@ -39,7 +39,7 @@ function Signup() {
               className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
-
+ 
           {/* EMAIL */}
           <div>
             <label className="block text-sm text-gray-700 mb-2">
@@ -52,7 +52,7 @@ function Signup() {
               className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
-
+ 
           {/* PASSWORD */}
           <div>
             <label className="block text-sm text-gray-700 mb-2">
@@ -68,7 +68,7 @@ function Signup() {
               Must be at least 8 characters.
             </p>
           </div>
-
+ 
           {/* BUTTON */}
           <button
             type="submit"
@@ -77,7 +77,7 @@ function Signup() {
             Get started
           </button>
         </form>
-
+ 
         {/* LOGIN LINK */}
         <p className="text-center text-sm text-gray-500 mt-8">
           Already have an account?{" "}
@@ -85,10 +85,10 @@ function Signup() {
             Log in
           </Link>
         </p>
-
+ 
       </div>
     </div>
   );
 }
-
+ 
 export default Signup;
