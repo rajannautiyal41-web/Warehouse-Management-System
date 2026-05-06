@@ -1,104 +1,150 @@
-import { FaApple, FaGoogle, FaSlack } from "react-icons/fa";
-import { FaMicrosoft } from "react-icons/fa6";
+import { FaApple, FaGoogle } from "react-icons/fa";
+import { SiMicrosoft, SiSlack } from "react-icons/si";
+
 function Sponsors() {
-    return (
-        <section className="w-full bg-white py-28">
+  return (
+    <section className="w-full bg-white overflow-hidden">
 
-            <div className="max-w-7xl mx-auto px-6">
+      <div
+        className="
+          max-w-[1920px]
+          mx-auto
 
-                {/* Heading */}
-                <div className="text-center mb-20">
+          px-6
+          md:px-10
+          lg:px-16
+          xl:px-24
 
-                    <div className="relative inline-block">
+          py-16
+          md:py-20
+          lg:py-24
+        "
+      >
 
-                        <h2 className="text-[52px] font-bold text-[#212529] relative z-10">
-                            Our sponsors
-                        </h2>
+        {/* HEADING */}
+        <div className="text-center">
 
-                        {/* Yellow underline */}
-                        <span className="absolute left-1/2 -translate-x-1/2 bottom-2 w-[180px] h-[10px] bg-[#FFE492] rounded-full -z-10">
-                        </span>
+          <div className="relative inline-block">
 
-                    </div>
+            <h2
+              className="
+                relative
+                z-10
 
-                </div>
+                text-[#212529]
+                font-bold
 
-                {/* Logos */}
-                <div className="flex flex-wrap justify-between items-center gap-10">
+                text-[34px]
+                leading-[42px]
 
-                    {/* Apple */}
-                    <div className="text-black text-6xl cursor-pointer hover:scale-110 transition duration-300">
-                        <FaApple />
-                    </div>
+                md:text-[44px]
+                md:leading-[52px]
 
-                    {/* Microsoft */}
-                    {/* Microsoft */}
-                    <div className="flex items-center gap-4 cursor-pointer hover:scale-105 transition duration-300">
+                lg:text-[60px]
+                lg:leading-[72px]
+              "
+            >
+              Our sponsors
+            </h2>
 
-                        {/* 4 Squares */}
-                        <div className="grid grid-cols-2 gap-1">
+            {/* UNDERLINE */}
+            <span
+              className="
+                absolute
+                left-1/2
+                -translate-x-1/2
+                bottom-1
 
-                            <div className="w-4 h-4 bg-[#F25022]"></div>
-                            <div className="w-4 h-4 bg-[#7FBA00]"></div>
-                            <div className="w-4 h-4 bg-[#00A4EF]"></div>
-                            <div className="w-4 h-4 bg-[#FFB900]"></div>
+                w-[120px]
+                md:w-[150px]
+                lg:w-[180px]
 
-                        </div>
+                h-[8px]
+                md:h-[10px]
 
-                        <span className="text-[42px] font-semibold text-[#737373]">
-                            Microsoft
-                        </span>
+                bg-[#FFE492]
+                rounded-full
+                z-0
+              "
+            ></span>
 
-                    </div>
-                    {/* Slack */}
-{/* Slack */}
-<div className="flex items-center gap-4 cursor-pointer hover:scale-105 transition-all duration-300">
+          </div>
 
-  {/* Slack Icon */}
-  <div className="relative w-[52px] h-[52px]">
+        </div>
 
-    {/* TOP LEFT - BLUE */}
-    <div className="absolute top-0 left-[18px] w-[12px] h-[24px] bg-[#36C5F0] rounded-full"></div>
-    <div className="absolute top-[18px] left-0 w-[24px] h-[12px] bg-[#36C5F0] rounded-full"></div>
+        {/* LOGOS */}
+        <div
+          className="
+            mt-14
+            md:mt-16
+            lg:mt-20
 
-    {/* TOP RIGHT - GREEN */}
-    <div className="absolute top-0 right-[18px] w-[12px] h-[24px] bg-[#2EB67D] rounded-full"></div>
-    <div className="absolute top-[18px] right-0 w-[24px] h-[12px] bg-[#2EB67D] rounded-full"></div>
+            flex
+            flex-col
+            lg:flex-row
 
-    {/* BOTTOM LEFT - RED */}
-    <div className="absolute bottom-0 left-[18px] w-[12px] h-[24px] bg-[#E01E5A] rounded-full"></div>
-    <div className="absolute bottom-[18px] left-0 w-[24px] h-[12px] bg-[#E01E5A] rounded-full"></div>
+            items-center
+            justify-center
 
-    {/* BOTTOM RIGHT - YELLOW */}
-    <div className="absolute bottom-0 right-[18px] w-[12px] h-[24px] bg-[#ECB22E] rounded-full"></div>
-    <div className="absolute bottom-[18px] right-0 w-[24px] h-[12px] bg-[#ECB22E] rounded-full"></div>
+            gap-12
+            md:gap-14
+            lg:gap-24
+            xl:gap-32
+          "
+        >
 
-  </div>
+          {/* APPLE */}
+          <div className="text-black text-[52px] md:text-[64px] lg:text-[72px]">
+            <FaApple />
+          </div>
 
-  {/* Slack Text */}
-  <span className="text-[52px] font-bold text-black leading-none">
-    slack
-  </span>
+          {/* MICROSOFT */}
+          <div className="flex items-center gap-3">
+            <SiMicrosoft className="text-[42px] md:text-[50px] lg:text-[58px] text-[#7FBA00]" />
 
-</div>
-                    {/* Google */}
-                    <div className="text-[52px] font-semibold cursor-pointer hover:scale-110 transition duration-300">
+            <span
+              className="
+                text-[#6B6B6B]
+                font-semibold
 
-                        <span className="text-[#4285F4]">G</span>
-                        <span className="text-[#EA4335]">o</span>
-                        <span className="text-[#FBBC05]">o</span>
-                        <span className="text-[#4285F4]">g</span>
-                        <span className="text-[#34A853]">l</span>
-                        <span className="text-[#EA4335]">e</span>
+                text-[28px]
+                md:text-[34px]
+                lg:text-[40px]
+              "
+            >
+              Microsoft
+            </span>
+          </div>
 
-                    </div>
+          {/* SLACK */}
+          <div className="flex items-center gap-3">
+            <SiSlack className="text-[42px] md:text-[50px] lg:text-[58px] text-[#4A154B]" />
 
-                </div>
+            <span
+              className="
+                text-black
+                font-bold
 
-            </div>
+                text-[28px]
+                md:text-[34px]
+                lg:text-[40px]
+              "
+            >
+              slack
+            </span>
+          </div>
 
-        </section>
-    );
+          {/* GOOGLE */}
+          <div className="text-[52px] md:text-[64px] lg:text-[72px]">
+            <FaGoogle className="text-[#4285F4]" />
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+  );
 }
 
 export default Sponsors;

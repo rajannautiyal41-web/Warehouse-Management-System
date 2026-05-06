@@ -1,33 +1,167 @@
 function Hero() {
   return (
-    <section className="bg-[#043873] overflow-hidden relative">
+    <section className="w-full bg-[#043873] overflow-hidden">
 
-      <div className="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-16 items-center min-h-screen">
+      {/* MAIN CONTAINER */}
+      <div
+        className="
+          max-w-[1920px]
+          mx-auto
+        "
+      >
 
-        {/* LEFT CONTENT */}
-        <div className="relative z-10">
+        {/* HERO INNER */}
+        <div
+          className="
+            max-w-[1440px]
+            mx-auto
 
-          <h1 className="text-white text-5xl md:text-7xl font-bold leading-tight">
-            Get More Done
-            <br />
-            with whitepace
-          </h1>
+            px-5
+            sm:px-8
+            md:px-10
+            lg:px-14
+            xl:px-16
 
-          <p className="text-gray-300 mt-6 text-lg leading-8 max-w-xl">
-            Project management software that enables your teams
-            to collaborate, plan, analyze and manage everyday tasks.
-          </p>
+            pt-10
+            md:pt-16
+            lg:pt-20
 
-          <button className="mt-8 bg-[#4F9CF9] hover:bg-blue-500 transition-all duration-300 text-white px-7 py-4 rounded-lg font-medium shadow-lg cursor-pointer">
-            Try Whitepace free →
-          </button>
+            pb-16
+            md:pb-20
+            lg:pb-24
 
-        </div>
+            grid
+            md:grid-cols-2
 
-        {/* RIGHT CONTENT */}
-        <div className="flex justify-center">
+            gap-12
+            lg:gap-16
+            xl:gap-24
 
-          <div className="w-full max-w-2xl h-[400px] bg-[#C4DEFD] shadow-xl">
+            items-center
+          "
+        >
+
+          {/* LEFT CONTENT */}
+          <div
+            className="
+              relative
+              z-10
+
+              text-center
+              md:text-left
+            "
+          >
+
+            {/* HEADING */}
+            <h1
+  className="
+    text-white
+    font-bold
+
+    leading-[110%]
+
+    tracking-[-1.5px]
+
+    text-[38px]
+    sm:text-[52px]
+    md:text-[54px]
+    lg:text-[64px]
+    xl:text-[64px]
+
+    max-w-[650px]
+  "
+>
+  Get More Done
+  <br />
+  with whitepace
+</h1>
+
+            {/* DESCRIPTION */}
+            <p
+              className="
+                text-[#D9E1F2]
+
+                mt-5
+                md:mt-6
+
+                mx-auto
+                md:mx-0
+
+                max-w-[300px]
+                sm:max-w-[500px]
+                lg:max-w-[550px]
+
+                leading-7
+                md:leading-8
+
+                text-[15px]
+                md:text-[17px]
+              "
+            >
+              Project management software that enables your teams
+              to collaborate, plan, analyze and manage everyday tasks.
+            </p>
+
+            {/* BUTTON */}
+            <button
+              className="
+                mt-8
+                md:mt-10
+
+                bg-[#4F9CF9]
+                hover:bg-[#3388f5]
+
+                transition-all
+                duration-300
+
+                text-white
+                font-medium
+
+                px-6
+                md:px-8
+
+                py-3
+                md:py-4
+
+                rounded-lg
+                shadow-lg
+                cursor-pointer
+
+                text-[15px]
+                md:text-[16px]
+              "
+            >
+              Try Whitepace free →
+            </button>
+
+          </div>
+
+          {/* RIGHT BOX */}
+          <div className="flex justify-center md:justify-end">
+
+            <div
+              className="
+                bg-[#C4DEFD]
+
+                w-full
+
+                max-w-[280px]
+                sm:max-w-[450px]
+                md:max-w-[500px]
+                lg:max-w-[600px]
+                xl:max-w-[685px]
+
+                h-[200px]
+                sm:h-[300px]
+                md:h-[320px]
+                lg:h-[380px]
+                xl:h-[448px]
+
+                shadow-xl
+              "
+            >
+            </div>
+
           </div>
 
         </div>
