@@ -1,4 +1,6 @@
 import './App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Signup from "./components/pages/SignUp/SignUp";
 import Footer from './components/layouts/Footer'
 import Testimonials from './components/sections/Testimonials'
 import Whitepaceend from './components/sections/Whitespaceend'
@@ -14,7 +16,7 @@ import Navbar from './components/layouts/Navbar'
 import Work from './components/sections/Work'
 import Sponsors from './components/sections/Sponsors'
  
-function App() {
+function LandingPage() {
  
   return (
     <>
@@ -35,7 +37,14 @@ function App() {
     </>
   )
 }
- 
-export default App
- 
- 
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+    </Router>
+  );
+}
+export default App;
