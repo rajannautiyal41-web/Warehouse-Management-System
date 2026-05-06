@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import LogoWMS from "../../../assets/LogoWMS.svg";
+import LogoWMS from "../../assets/LogoWMS.svg";
  
 function Signup() {
   return (

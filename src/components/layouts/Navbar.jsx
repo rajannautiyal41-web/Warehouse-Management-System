@@ -1,5 +1,5 @@
 import { ChevronDown, Menu } from "lucide-react";
-import LoginPage from '../Pages/LoginPage/LoginPage'
+import LoginPage from '../../pages/LoginPage/LoginPage'
 function Navbar() {
   return (
     <nav className="w-full bg-[#043873]">
@@ -88,9 +88,7 @@ function Navbar() {
           <div className="flex items-center gap-3 md:gap-4">
 
             {/* LOGIN BUTTON */}
-            <button
-              className="
-                hidden
+           <Link to="/login" className="hidden
                 lg:block
                 bg-[#FFE492]
                 text-black
@@ -102,11 +100,10 @@ function Navbar() {
                 hover:bg-[#ffd86b]
                 transition-all
                 duration-300
-                cursor-pointer
-              "
-            >
-              Login
-            </button>
+                cursor-pointer">
+                        Log in
+                      </Link>
+ 
 
             {/* TRY BUTTON */}
             <button
