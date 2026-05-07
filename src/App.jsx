@@ -1,9 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import SignUp from './pages/SignupPage/SignUp'
 import { Link } from "react-router-dom";
 import { ChevronDown, Menu } from "lucide-react";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import SignUp from './pages/SignupPage/SignUp'
+//WMS
+import Sidebar from "./components/wms sidebar/Sidebar";
+import Dashboard from "./pages/Dashboard";
+import ItemsPage from "./pages/ItemsPage";
 
+//WMS
 
 import "./App.css";
 
@@ -22,6 +27,7 @@ import Navbar from "./components/layouts/Navbar";
 import Work from "./components/sections/Work";
 import Sponsors from "./components/sections/Sponsors";
 import ForgotPassword from './pages/ForgetPassword/ForgetPassword'
+
 
 function Home() {
   return (
@@ -64,7 +70,31 @@ function App() {
           path="/forgot-password"
           element={<ForgotPassword />}
         />
-        
+
+        //WMS
+       {/* WMS ROUTES */}
+
+<Route
+  path="/dashboard"
+  element={
+    <div className="flex">
+      <Sidebar />
+      <Dashboard />
+    </div>
+  }
+/>
+
+<Route
+  path="/items"
+  element={
+    <div className="flex">
+      <Sidebar />
+      <ItemsPage />
+    </div>
+  }
+/>
+
+        //WMS
       </Routes>
      
 
