@@ -34,7 +34,7 @@ function PickListTable() {
           absolute
 
           left-3
-          top-1/2
+          top-8/12
           -translate-y-1/2
 
           w-[34px]
@@ -65,8 +65,8 @@ function PickListTable() {
         className="
           absolute
 
-          right-3
-          top-1/2
+          right-5
+          top-8/12
           -translate-y-1/2
 
           w-[34px]

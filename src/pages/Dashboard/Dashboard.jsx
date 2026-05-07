@@ -5,6 +5,7 @@ import CalendarCard from "./components/CalendarCard";
 import Orders from "./components/Orders";
 import Profit from "./components/Profit";
 import PickListTable from "./components/PicklistTable";
+import PreviousOrdersChart from './components/PreviousOrderChart';
 
 function Dashboard() {
   return (
@@ -36,6 +37,11 @@ function Dashboard() {
           {/* TABLE */}
           <div className="mt-6">
             <PickListTable />
+          </div>
+
+       {/* PickListChart */}
+          <div className="mt-6">
+            <PreviousOrdersChart />
           </div>
 
         </main>
