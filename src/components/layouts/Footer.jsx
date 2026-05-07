@@ -82,11 +82,16 @@ export default function Footer() {
         </div>
 
         {/* RIGHT SIDE (ICONS) */}
-        <div className="
-          flex items-center gap-5 text-[#B9C6D2]
-          w-full sm:w-auto
-          justify-start sm:justify-end
-        ">
+       <div
+  className="
+    flex items-center gap-5 text-[#B9C6D2]
+    ml-auto
+    max-[515px]:w-full
+    max-[515px]:justify-center
+    max-[515px]:mt-2
+  "
+>
+  
           <FaFacebookF className="text-[13px] hover:text-white cursor-pointer" />
           <FaTwitter className="text-[13px] hover:text-white cursor-pointer" />
           <FaLinkedinIn className="text-[13px] hover:text-white cursor-pointer" />
