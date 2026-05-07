@@ -15,10 +15,14 @@ export default function Footer() {
  
         {/* LEFT SIDE */}
         <div className="
-          flex flex-wrap items-center gap-3
-          text-[11px] sm:text-[12px] md:text-[13px]
-          text-[#B9C6D2]
-        ">
+  flex flex-wrap items-center gap-3
+  text-[11px] sm:text-[12px] md:text-[13px]
+  text-[#B9C6D2]
+
+  max-[412px]:justify-center
+  max-[412px]:text-center
+  max-[412px]:w-full
+">
  
           {/* LANGUAGE */}
           <div className="relative">

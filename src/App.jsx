@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import SignUp from './pages/SignupPage/SignUp'
-import Dashboard from "./pages/Dashboard";
-import CollapseDashboard from './pages/CollapseDashboard'
+import { Link } from "react-router-dom";
+import { ChevronDown, Menu } from "lucide-react";
+
 
 import "./App.css";
 
@@ -63,8 +64,7 @@ function App() {
           path="/forgot-password"
           element={<ForgotPassword />}
         />
-        <Route path ='/CollapseDashboard' element={<CollapseDashboard/>}/>
- <Route path="/dashboard" element={<Dashboard />} />
+        
       </Routes>
      
 
