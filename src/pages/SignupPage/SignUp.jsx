@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
-import LogoWMS from "../../assets/LogoWMS.svg";
- 
+import { ChevronDown, ImportIcon, Menu } from "lucide-react";
+import LoginPage from '../../pages/LoginPage/LoginPage'
+import WMSlogo from '../../assets/LandingPageIcons/WMSlogo.svg'
+
 function Signup() {
   return (
     <div className="min-h-screen bg-[#F0F1F3] flex items-center justify-center">
@@ -10,7 +12,7 @@ function Signup() {
         {/* LOGO */}
         <div className="flex justify-center mb-6">
           <img
-            src={LogoWMS}
+            src={WMSlogo}
             alt="WMS Logo"
             className="w-[120px] sm:w-[140px] h-auto object-contain"
           />

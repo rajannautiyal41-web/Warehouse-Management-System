@@ -18,7 +18,11 @@ export default function Footer() {
   flex flex-wrap items-center gap-3
   text-[11px] sm:text-[12px] md:text-[13px]
   text-[#B9C6D2]
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 841a57a1083bc3bdf2ee23166087f7e02ee73f59
   max-[412px]:justify-center
   max-[412px]:text-center
   max-[412px]:w-full
