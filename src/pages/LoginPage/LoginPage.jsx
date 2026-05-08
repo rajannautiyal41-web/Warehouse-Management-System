@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
-import WMSlogo from '../../assets/WMSlogo.svg'
+import { ChevronDown, Menu } from "lucide-react";
+import WMSlogo from '../../assets/LandingPageIcons/WMSlogo.svg'
+import Signup from '../SignupPage/SignUp';
+
 function LoginPage() {
     return (
         <section className="min-h-screen bg-[#f0f1f3] flex items-center justify-center px-4">
@@ -163,16 +166,16 @@ function LoginPage() {
                         </label>
 
                         <Link
-  to="/forgot-password"
-  className="
+                            to="/forgot-password"
+                            className="
     text-[#2563EB]
     text-[14px]
     font-medium
     hover:underline
   "
->
-  Forgot password
-</Link>
+                        >
+                            Forgot password
+                        </Link>
 
                     </div>
 

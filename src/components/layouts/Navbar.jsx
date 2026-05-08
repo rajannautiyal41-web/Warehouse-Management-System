@@ -90,7 +90,6 @@ function Navbar() {
  
             {/* LOGIN BUTTON */}
             <Link to="/login" className="hidden
-           <Link to="/login" className="hidden
                 lg:block
                 bg-[#FFE492]
                 text-black

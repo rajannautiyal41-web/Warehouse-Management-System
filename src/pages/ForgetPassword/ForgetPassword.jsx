@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import WMSlogo from "../../assets/WMSlogo.svg";
+import WMSlogo from "../../assets/LandingPageIcons/WMSlogo.svg";
 
 function ForgotPassword() {
   return (
