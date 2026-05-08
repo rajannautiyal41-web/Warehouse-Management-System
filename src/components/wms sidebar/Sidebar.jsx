@@ -1,5 +1,7 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
+
+
 import {
   Home,
   Grid2x2,
@@ -12,31 +14,76 @@ import {
   Menu,
 } from "lucide-react";
 
-function Sidebar() {
-  const [collapsed, setCollapsed] = useState(false);
+function Sidebar({ collapsed, setCollapsed }) {
+  const dropdownRefs = useRef({});
+  const sidebarRef = useRef();
+  
+useEffect(() => {
+  const handleClickOutside = (e) => {
+    const dropdownElements = Object.values(dropdownRefs.current);
+
+    const isClickInsideDropdown = dropdownElements.some(
+      (el) => el && el.contains(e.target)
+    );
+
+    const isClickInsideSidebar =
+      sidebarRef.current && sidebarRef.current.contains(e.target);
+
+    // ❗ CLOSE ONLY if clicked completely outside
+    if (!isClickInsideDropdown && !isClickInsideSidebar) {
+      setOpenMenu({
+        master: false,
+        inventory: false,
+        sales: false,
+      });
+    }
+  };
+
+  document.addEventListener("click", handleClickOutside);
+
+  return () => {
+    document.removeEventListener("click", handleClickOutside);
+  };
+}, []);
 
   const [openMenu, setOpenMenu] = useState({
     master: false,
     inventory: false,
     sales: false,
   });
+const location = useLocation();
+const path = location.pathname;
 
-  const toggleMenu = (menu) => {
-    setOpenMenu({
-      ...openMenu,
-      [menu]: !openMenu[menu],
-    });
-  };
+// active checks
+const isDashboard = path === "/dashboard";
+const isMaster = path.startsWith("/items"); 
+const isItem =
+  path.startsWith("/items") ||
+  path.startsWith("/create-item");
+ const toggleMenu = (menu) => {
+  setOpenMenu((prev) => ({
+    master: false,
+    inventory: false,
+    sales: false,
+    [menu]: !prev[menu],
+  }));
+};
 
   return (
-    <div
-      className={`
-        h-screen bg-white shadow-lg
-        flex flex-col justify-between
-        transition-all duration-300
-        ${collapsed ? "w-[80px]" : "w-[260px]"}
-      `}
-    >
+  <div
+  ref={sidebarRef}
+  className={`
+  fixed md:static top-0 left-0 z-50
+  min-h-screen bg-white
+  shadow-[2px_0_10px_rgba(0,0,0,0.05)]
+  flex flex-col justify-between
+  transition-all duration-300
+
+  w-[260px] 
+
+  ${collapsed ? "-translate-x-full" : "translate-x-0"} md:translate-x-0
+`}
+>
 
       {/* TOP + MENU */}
       <div>
@@ -58,26 +105,28 @@ function Sidebar() {
         {/* MENU */}
         <div className="p-4 space-y-2">
 
-          <MenuItem
-            icon={<Home size={20} />}
-            label="Dashboard"
-            active
-            collapsed={collapsed}
-            to="/dashboard"
-          />
+         <MenuItem
+  icon={<Home size={20} />}
+  label="Dashboard"
+  active={isDashboard}
+  collapsed={collapsed}
+  to="/dashboard"
+/>
 
           <DropdownItem
-            icon={<Grid2x2 size={20} />}
-            label="Master"
-            collapsed={collapsed}
-            open={openMenu.master}
-            onClick={() => toggleMenu("master")}
-          >
-            <SubItem label="Item" to="/items" />
-            <SubItem label="Category" />
+  icon={<Grid2x2 size={20} />}
+  label="Master"
+  dropdownRefs={dropdownRefs}   // ✅ ADD THIS
+  collapsed={collapsed}
+  open={collapsed ? openMenu.master : (openMenu.master || isMaster)} // 🔥 THIS LINE FIXES AUTO OPEN
+  onClick={() => toggleMenu("master")}
+  active={isMaster}                    // 🔥 THIS LINE FIXES BOLD
+>
+            <SubItem label="Item" to="/items" active={isItem} />
+            <SubItem label="Supplier" to="/suppliers" active={isItem}/>
           </DropdownItem>
 
-          <DropdownItem
+          {/*<DropdownItem
             icon={<Box size={20} />}
             label="Inventory"
             collapsed={collapsed}
@@ -115,7 +164,7 @@ function Sidebar() {
             icon={<Settings size={20} />}
             label="Configuration"
             collapsed={collapsed}
-          />
+          />*/}
         </div>
       </div>
 
@@ -146,12 +195,12 @@ function MenuItem({
   collapsed,
   to,
 }) {
-  return (
-    <Link
-      to={to}
+  const content = (
+    <div
+      title={collapsed ? label : ""}
       className={`
-        flex items-center gap-3
-        px-4 py-3 rounded-lg
+        flex items-center ${collapsed ? "justify-center" : "gap-3 px-4"}
+        h-11 rounded-lg
         transition
         ${
           active
@@ -161,14 +210,15 @@ function MenuItem({
       `}
     >
       {icon}
-
       {!collapsed && (
         <span className="text-sm font-medium">
           {label}
         </span>
       )}
-    </Link>
+    </div>
   );
+
+  return to ? <Link to={to}>{content}</Link> : content;
 }
 
 /* ================= DROPDOWN ================= */
@@ -180,18 +230,34 @@ function DropdownItem({
   open,
   onClick,
   children,
+  active,
+  dropdownRefs
 }) {
   return (
-    <div>
+    <div className="relative">
       <div
-        onClick={onClick}
-        className="
-          flex items-center justify-between
-          px-4 py-3 rounded-lg cursor-pointer
-          text-gray-500 hover:bg-gray-100
-        "
+  onClick={(e) => {
+    e.stopPropagation();   // ✅ ADD THIS
+    onClick();
+  }}
+title={collapsed ? label : ""}
+        className={`
+  flex items-center ${collapsed ? "justify-center" : "justify-between px-4"}
+  h-11 rounded-lg cursor-pointer
+  transition
+  ${
+    active
+      ? "text-blue-600 bg-blue-50 font-bold"
+      : "text-gray-500 hover:bg-gray-100"
+  }
+`}
       >
-        <div className="flex items-center gap-3">
+       <div
+  className={`
+    flex items-center 
+    ${collapsed ? "" : "gap-3"}
+  `}
+>
           {icon}
 
           {!collapsed && (
@@ -211,8 +277,15 @@ function DropdownItem({
         )}
       </div>
 
-      {!collapsed && open && (
-        <div className="ml-11 mt-1 space-y-2">
+     {open && (
+  <div
+    ref={(el) => (dropdownRefs.current[label] = el)}
+    onClick={(e) => e.stopPropagation()}
+  className={`
+    ${collapsed ? "absolute left-[72px] top-0 bg-white shadow-lg rounded-md p-2 z-50 min-w-[150px]" : "ml-11 mt-1"}
+    space-y-2
+  `}
+>
           {children}
         </div>
       )}
@@ -222,14 +295,18 @@ function DropdownItem({
 
 /* ================= SUB ITEM ================= */
 
-function SubItem({ label, to }) {
+function SubItem({ label, to, active }) {
   return (
     <Link
       to={to}
-      className="
-        block text-sm text-gray-500
-        hover:text-blue-600
-      "
+      className={`
+  block text-sm px-2 py-1 rounded
+  ${
+    active
+      ? "text-blue-500 font-medium bg-blue-50"
+      : "text-gray-500 hover:text-blue-600"
+  }
+`}
     >
       {label}
     </Link>

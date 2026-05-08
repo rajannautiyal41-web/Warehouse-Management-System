@@ -8,3 +8,10 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+.input {
+  @apply w-full h-10 border border-gray-300 rounded-md px-3 text-sm text-black bg-white;
+}
+
+.select {
+  @apply h-10 border border-gray-300 rounded-md px-2 text-sm bg-white;
+}
