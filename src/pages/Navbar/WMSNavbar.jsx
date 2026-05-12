@@ -1,62 +1,80 @@
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoChevronDown } from "react-icons/io5";
 
-function WMSNavbar() {
+function WMSNavbar({ setCollapsed }) {
   return (
-    <header className="w-full bg-[#0B3FCF] shadow-md">
-      
+    <header
+  className="
+    bg-[#0B3FCF]
+    shadow-md
+
+    fixed top-0 right-0
+    left-0 
+
+    z-50
+  "
+>
       <div
         className="
-          h-[72px]
-          px-4
-          sm:px-6
-          lg:px-8
-          flex
-          items-center
-          justify-between
+          h-[64px] sm:h-[68px] lg:h-[72px]
+
+          px-3 sm:px-6 lg:px-8 xl:px-12 2xl:px-16
+
+          flex items-center justify-between
         "
       >
-
         {/* LEFT SIDE */}
-        <div className="flex items-center gap-4 sm:gap-6 lg:gap-22">
+        <div
+          className="
+            flex items-center
+
+            gap-2 sm:gap-4 lg:gap-10 xl:gap-16   /* ✅ improved spacing */
+          "
+        >
 
           {/* LOGO */}
           <h1
             className="
               text-white
               font-bold
-              text-[32px]
-              tracking-[3px]
+
+              text-[20px]
+              sm:text-[24px]
+              md:text-[28px]
+              lg:text-[32px]
+              xl:text-[34px]
+
+              tracking-[2px] sm:tracking-[3px]
+
+              whitespace-nowrap   /* ✅ prevents breaking */
             "
           >
             WMS
           </h1>
 
-         {/* MENU ICON */}
-<button
-  className="
-    text-white
+          {/* MENU ICON */}
+          <button
+            onClick={() => setCollapsed(prev => !prev)}
+            className="
+              text-white
 
-    text-[26px]
-    lg:text-[28px]
+              text-[22px]
+              sm:text-[24px]
+              lg:text-[26px]
+              xl:text-[28px]
 
-    ml-2
-    sm:ml-4
-    lg:ml-6
+              ml-1 sm:ml-2 lg:ml-4   
 
-    flex
-    items-center
-    justify-center
+              flex items-center justify-center
 
-    hover:opacity-80
-    transition-all
-    duration-300
+              hover:opacity-80
+              transition-all duration-300
 
-    cursor-pointer
-  "
->
-  <RxHamburgerMenu />
-</button>
+              cursor-pointer
+            "
+          >
+            <RxHamburgerMenu />
+          </button>
         </div>
 
         {/* RIGHT SIDE */}
@@ -66,14 +84,16 @@ function WMSNavbar() {
 
             rounded-full
 
-            px-3
-            py-2
+            px-2 sm:px-3 lg:px-4
+            py-1.5 sm:py-2
 
-            flex
-            items-center
-            gap-3
+            flex items-center
+
+            gap-2 sm:gap-3 lg:gap-4
 
             shadow-sm
+
+            min-w-fit   /* ✅ prevents shrink issue */
           "
         >
 
@@ -82,8 +102,9 @@ function WMSNavbar() {
             src="https://i.pravatar.cc/100"
             alt="Profile"
             className="
-              w-[40px]
-              h-[40px]
+              w-[32px] h-[32px]
+              sm:w-[36px] sm:h-[36px]
+              lg:w-[40px] lg:h-[40px]
 
               rounded-full
               object-cover
@@ -96,7 +117,11 @@ function WMSNavbar() {
             <h3
               className="
                 text-[#1F2937]
-                text-[14px]
+
+                text-[12px]
+                sm:text-[13px]
+                lg:text-[14px]
+
                 font-semibold
               "
             >
@@ -106,7 +131,9 @@ function WMSNavbar() {
             <p
               className="
                 text-[#6B7280]
-                text-[11px]
+
+                text-[10px]
+                sm:text-[11px]
               "
             >
               PT. Aman Sentosa
@@ -118,7 +145,9 @@ function WMSNavbar() {
           <button
             className="
               text-[#6B7280]
-              text-[18px]
+
+              text-[16px]
+              sm:text-[18px]
 
               cursor-pointer
             "
@@ -127,9 +156,7 @@ function WMSNavbar() {
           </button>
 
         </div>
-
       </div>
-
     </header>
   );
 }

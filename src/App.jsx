@@ -1,21 +1,21 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 import { useState, useEffect } from "react";
-import { ChevronDown, Menu } from "lucide-react";
+
 import LoginPage from "./pages/LoginPage/LoginPage";
-import SignUp from './pages/SignupPage/SignUp'
-//WMS
+import SignUp from "./pages/SignupPage/SignUp";
+import ForgotPassword from "./pages/ForgetPassword/ForgetPassword";
+
+// WMS
+import WMSNavbar from "./pages/Navbar/WMSNavbar";
 import Sidebar from "./components/wms sidebar/Sidebar";
+import Layout from "./components/layouts/Layout";
 import Dashboard from "./pages/Dashboard";
-import ItemsPage from "./pages/ItemsPage";
-import CreateItem from "./pages/CreateItem";
+import ItemsPage from "./pages/MasterItems/ItemsPage";
+import CreateItem from "./pages/MasterItems/CreateItem";
+import Supplier from "./pages/masterSupplier/Supplier";
+import CreateSupplier from "./pages/masterSupplier/CreateSupplier";
 
-
-
-//WMS
-
-import "./App.css";
-
+// Website
 import Footer from "./components/layouts/Footer";
 import Testimonials from "./components/sections/Testimonials";
 import Whitepaceend from "./components/sections/Whitespaceend";
@@ -30,9 +30,11 @@ import Data from "./components/sections/Data";
 import Navbar from "./components/layouts/Navbar";
 import Work from "./components/sections/Work";
 import Sponsors from "./components/sections/Sponsors";
-import ForgotPassword from './pages/ForgetPassword/ForgetPassword'
+
+import "./App.css";
 
 
+// HOME PAGE
 function Home() {
   return (
     <>
@@ -54,153 +56,116 @@ function Home() {
   );
 }
 
-function App() {
-   const [collapsed, setCollapsed] = useState(true);
- useEffect(() => {
-  const handleResize = () => {
-    if (window.innerWidth >= 768) {
-      setCollapsed(false); // always open on desktop
-    } else {
-      setCollapsed(true); // closed on mobile
-    }
-  };
 
-  window.addEventListener("resize", handleResize);
-  handleResize();
-
-  return () => window.removeEventListener("resize", handleResize);
-}, []);
+//  WMS LAYOUT (MERGED + FIXED)
+function WMSLayout({ children, collapsed, setCollapsed }) {
   return (
-    <BrowserRouter>
+    <div className="h-screen bg-gray-100">
 
-      <Routes>
-
-        <Route path="/" element={<Home />} />
-
-        <Route
-          path="/login"
-          element={<LoginPage />}
-        />
-        <Route
-          path="/signup"
-          element={<SignUp />}
-        />
-        <Route
-          path="/forgot-password"
-          element={<ForgotPassword />}
-        />
-        
-
-        
-     {/* WMS ROUTES */}
-
-<Route
-  path="/dashboard"
-  element={
-    <div className="flex">
-
-      <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
-
-      {!collapsed && (
-        <div
-          className="fixed inset-0 bg-transparent z-40 md:hidden"
-          onClick={() => setCollapsed(true)}
-        />
-      )}
-
-      <div className="flex-1 w-full">
-        {/* ✅ MOBILE HEADER */}
-  <div className="md:hidden flex items-center p-3 bg-white shadow-sm">
-    <button
-      className="p-2 text-xl"
-      onClick={() => setCollapsed(false)}
-    >
-      ☰
-    </button>
-
-    <h1 className="ml-3 font-semibold">Menu</h1>
-  </div>
-        <Dashboard />
+      {/* NAVBAR */}
+      <div className="fixed top-0 left-0 right-0 h-[70px] bg-white z-50 shadow">
+        <WMSNavbar setCollapsed={setCollapsed} />
       </div>
-
-    </div>
-  }
-/>
-
-<Route
-  path="/items"
-  element={
-    <div className="flex">
-
-      <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
-
-      {/* ✅ ADD OVERLAY */}
-      {!collapsed && (
-        <div
-          className="fixed inset-0 bg-transparent z-40 md:hidden"
-          onClick={() => setCollapsed(true)}
-        />
-      )}
-
-      {/* ✅ ADD LEFT MARGIN */}
-      <div className="flex-1 w-full">
-
-  {/* ✅ MOBILE HEADER */}
-  <div className="md:hidden flex items-center p-3 bg-white shadow-sm">
-    <button
-      className="p-2 text-xl"
-      onClick={() => setCollapsed(false)}
-    >
-      ☰
-    </button>
-
-    <h1 className="ml-3 font-semibold">Menu</h1>
-  </div>
-        <ItemsPage />
-      </div>
-
-    </div>
-  }
-/>
-
-<Route
-  path="/create-item"
-  element={
-    <div className="flex">
 
       {/* SIDEBAR */}
-      <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
+      <div
+        className={`fixed top-[70px] bottom-0 z-40 bg-white border-r transition-all duration-300
+        ${collapsed ? "w-[70px]" : "w-[260px]"}`}
+      >
+        <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
+      </div>
 
-      {/* OVERLAY */}
-      {!collapsed && (
-        <div
-          className="fixed inset-0 bg-transparent z-40 md:hidden"
-          onClick={() => setCollapsed(true)}
-        />
-      )}
-
-      {/* PAGE */}
-      <div className="flex-1 w-full">
-        {/* ✅ MOBILE HEADER */}
-  <div className="md:hidden flex items-center p-3 bg-white shadow-sm">
-    <button
-      className="p-2 text-xl"
-      onClick={() => setCollapsed(false)}
-    >
-      ☰
-    </button>
-
-    <h1 className="ml-3 font-semibold">Menu</h1>
-  </div>
-        <CreateItem />
+     
+      <div
+        className={`
+          pt-[70px]
+          ${collapsed ? "pl-[70px]" : "pl-[260px]"}
+          h-full overflow-auto
+        `}
+      >
+        <div className="p-4">
+          {children}
+        </div>
       </div>
 
     </div>
-  }
-/>
+  );
+}
+
+//  MAIN APP
+function App() {
+  const [collapsed, setCollapsed] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setCollapsed(false); // open on desktop
+      } else {
+        setCollapsed(true); // closed on mobile
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return (
+    <BrowserRouter>
+      <Routes>
+
+        {/* WEBSITE */}
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+
+        {/* WMS ROUTES */}
+        <Route
+          path="/dashboard"
+          element={
+            <WMSLayout collapsed={collapsed} setCollapsed={setCollapsed}>
+              <Dashboard />
+            </WMSLayout>
+          }
+        />
+
+        <Route
+          path="/items"
+          element={
+            <WMSLayout collapsed={collapsed} setCollapsed={setCollapsed}>
+              <ItemsPage />
+            </WMSLayout>
+          }
+        />
+
+        <Route
+          path="/create-item"
+          element={
+            <WMSLayout collapsed={collapsed} setCollapsed={setCollapsed}>
+              <CreateItem />
+            </WMSLayout>
+          }
+        />
+        <Route
+          path="/suppliers"
+          element={
+            <WMSLayout collapsed={collapsed} setCollapsed={setCollapsed}>
+              <Supplier />
+            </WMSLayout>
+          }
+        />
+        <Route
+          path="/create-supplier"
+          element={
+            <WMSLayout collapsed={collapsed} setCollapsed={setCollapsed}>
+              <CreateSupplier />
+            </WMSLayout>
+          }
+        />
+
       </Routes>
-
-
     </BrowserRouter>
   );
 }

@@ -34,7 +34,7 @@ function ItemsPage() {
   ];
 
   return (
-    <div className="flex-1 bg-gray-50 min-h-screen w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-20 py-6">
+    <div className="bg-gray-50 w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-20 py-6">
       <div className="w-full">
       {/* TOP */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">

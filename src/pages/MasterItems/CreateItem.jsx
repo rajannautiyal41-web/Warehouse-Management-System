@@ -6,7 +6,7 @@ function CreateItem() {
   const [items, setItems] = useState([]);
   const [images, setImages] = useState([null, null, null]);
   const [activeTab, setActiveTab] = useState("detail");
-  const [collapsed, setCollapsed] = useState(false);
+  
   // ✅ FORM STATE (FIXED)
   const [form, setForm] = useState({
     sku: "",
@@ -47,9 +47,13 @@ function CreateItem() {
   
 
 
-  return (
-    <div className="flex-1 bg-gray-50 min-h-screen 
-p-2 sm:p-3 md:p-5 lg:p-6 xl:p-8 2xl:px-16">
+ return (
+  <div
+    className="
+      bg-gray-50 w-full
+      p-2 sm:p-3 md:p-5 lg:p-6 xl:p-8 2xl:px-16
+    "
+  >
 
       {/* HEADER */}
      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
@@ -164,21 +168,39 @@ p-2 sm:p-3 md:p-5 lg:p-6 xl:p-8 2xl:px-16">
       {/* TABS */}
       <div className="bg-white rounded-lg border border-gray-200 mt-6">
 
-        <div className="flex gap-6 px-6 pt-4 border-b border-gray-200 text-sm">
-          <button onClick={() => setActiveTab("detail")}
-            className={activeTab === "detail" ? "text-blue-600 border-b-2 border-blue-600 pb-2" : "text-gray-400 pb-2"}>
-            Detail
-          </button>
+        <div className="flex gap-4 px-4 pt-4 border-b border-gray-200 text-sm overflow-x-auto whitespace-nowrap">
+         <button
+  onClick={() => setActiveTab("detail")}
+  className={`shrink-0 ${
+    activeTab === "detail"
+      ? "text-blue-600 border-b-2 border-blue-600 pb-2"
+      : "text-gray-400 pb-2"
+  }`}
+>
+  Detail
+</button>
 
-          <button onClick={() => setActiveTab("dimension")}
-            className={activeTab === "dimension" ? "text-blue-600 border-b-2 border-blue-600 pb-2" : "text-gray-400 pb-2"}>
-            Dimension
-          </button>
+<button
+  onClick={() => setActiveTab("dimension")}
+  className={`shrink-0 ${
+    activeTab === "dimension"
+      ? "text-blue-600 border-b-2 border-blue-600 pb-2"
+      : "text-gray-400 pb-2"
+  }`}
+>
+  Dimension
+</button>
 
-          <button onClick={() => setActiveTab("costing")}
-            className={activeTab === "costing" ? "text-blue-600 border-b-2 border-blue-600 pb-2" : "text-gray-400 pb-2"}>
-            Costing
-          </button>
+<button
+  onClick={() => setActiveTab("costing")}
+  className={`shrink-0 ${
+    activeTab === "costing"
+      ? "text-blue-600 border-b-2 border-blue-600 pb-2"
+      : "text-gray-400 pb-2"
+  }`}
+>
+  Costing
+</button>
         </div>
 
         <div className="p-6">

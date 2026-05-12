@@ -1,200 +1,175 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-
 import {
   Home,
   Grid2x2,
-  Box,
-  ShoppingCart,
-  Truck,
-  FileText,
-  Settings,
   ChevronDown,
-  Menu,
 } from "lucide-react";
 
 function Sidebar({ collapsed, setCollapsed }) {
   const dropdownRefs = useRef({});
   const sidebarRef = useRef();
-  
-useEffect(() => {
-  const handleClickOutside = (e) => {
-    const dropdownElements = Object.values(dropdownRefs.current);
-
-    const isClickInsideDropdown = dropdownElements.some(
-      (el) => el && el.contains(e.target)
-    );
-
-    const isClickInsideSidebar =
-      sidebarRef.current && sidebarRef.current.contains(e.target);
-
-    // ❗ CLOSE ONLY if clicked completely outside
-    if (!isClickInsideDropdown && !isClickInsideSidebar) {
-      setOpenMenu({
-        master: false,
-        inventory: false,
-        sales: false,
-      });
-    }
-  };
-
-  document.addEventListener("click", handleClickOutside);
-
-  return () => {
-    document.removeEventListener("click", handleClickOutside);
-  };
-}, []);
 
   const [openMenu, setOpenMenu] = useState({
     master: false,
     inventory: false,
     sales: false,
   });
-const location = useLocation();
-const path = location.pathname;
 
-// active checks
-const isDashboard = path === "/dashboard";
-const isMaster = path.startsWith("/items"); 
-const isItem =
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (e.target.closest(".dropdown-trigger")) return;
+
+      const dropdownElements = Object.values(dropdownRefs.current);
+
+      const isClickInsideDropdown = dropdownElements.some(
+        (el) => el && el.contains(e.target)
+      );
+
+      const isClickInsideSidebar =
+        sidebarRef.current && sidebarRef.current.contains(e.target);
+
+      if (!isClickInsideDropdown && !isClickInsideSidebar) {
+        setOpenMenu({
+          master: false,
+          inventory: false,
+          sales: false,
+        });
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
+
+  const openSpecificMenu = (menu) => {
+    setOpenMenu({
+      master: false,
+      inventory: false,
+      sales: false,
+      [menu]: true,
+    });
+  };
+
+  const closeMenus = () => {
+    setOpenMenu({
+      master: false,
+      inventory: false,
+      sales: false,
+    });
+  };
+
+  const toggleMenu = (menu) => {
+    setOpenMenu((prev) => ({
+      master: false,
+      inventory: false,
+      sales: false,
+      [menu]: !prev[menu],
+    }));
+  };
+
+  const location = useLocation();
+  const path = location.pathname;
+
+  const isDashboard = path === "/dashboard";
+
+  const isMaster =
   path.startsWith("/items") ||
-  path.startsWith("/create-item");
- const toggleMenu = (menu) => {
-  setOpenMenu((prev) => ({
-    master: false,
-    inventory: false,
-    sales: false,
-    [menu]: !prev[menu],
-  }));
-};
+  path.startsWith("/create-item") ||
+  path.startsWith("/suppliers") ||
+  path.startsWith("/create-supplier");
+
+
+  const isItem =
+    path.startsWith("/items") ||
+    path.startsWith("/create-item");
+
+  const isSupplier =
+  path.startsWith("/suppliers") ||
+  path.startsWith("/create-supplier");
+  
 
   return (
-  <div
-  ref={sidebarRef}
-  className={`
-  fixed md:static top-0 left-0 z-50
-  min-h-screen bg-white
+    <>
+      {/* OVERLAY */}
+      {!collapsed && (
+        <div
+          className="fixed left-0 right-0 bottom-0 top-[64px] sm:top-[68px] lg:top-[72px] bg-black/30 z-40 md:hidden"
+          onClick={() => setCollapsed(true)}
+        />
+      )}
+
+      {/* SIDEBAR */}
+      <div
+        ref={sidebarRef}
+        className={`
+  fixed left-0 top-0 bottom-0 z-50
+  bg-white
   shadow-[2px_0_10px_rgba(0,0,0,0.05)]
   flex flex-col justify-between
+  overflow-visible
   transition-all duration-300
 
-  w-[260px] 
-
-  ${collapsed ? "-translate-x-full" : "translate-x-0"} md:translate-x-0
+  ${collapsed ? "w-[70px]" : "w-[240px] sm:w-[260px]"}
+  ${collapsed ? "md:w-[70px]" : "md:w-[260px]"}
+  translate-x-0
 `}
->
+      >
+        {/* TOP SECTION */}
+        <div>
+          <div className="pt-[64px] sm:pt-[68px] lg:pt-[72px] p-3 sm:p-4 space-y-2">
 
-      {/* TOP + MENU */}
-      <div>
-        <div className="h-[70px] flex items-center justify-between px-5">
-          {!collapsed && (
-            <h1 className="text-2xl font-bold text-blue-700">
-              WMS
-            </h1>
-          )}
+            <MenuItem
+              icon={<Home size={20} />}
+              label="Dashboard"
+              active={isDashboard}
+              collapsed={collapsed}
+              to="/dashboard"
+            />
 
-          <button
-            onClick={() => setCollapsed(!collapsed)}
-            className="text-gray-600"
-          >
-            <Menu size={22} />
-          </button>
-        </div>
+            <DropdownItem
+              icon={<Grid2x2 size={20} />}
+              label="Master"
+              dropdownRefs={dropdownRefs}
+              collapsed={collapsed}
+              open={
+                collapsed
+                  ? openMenu.master === true
+                  : openMenu.master || isMaster
+              }
+              onOpen={() => openSpecificMenu("master")}
+              onClose={closeMenus}
+              onToggle={() => toggleMenu("master")}
+              active={isMaster}
+            >
+              {/* ✅ ITEMS LIST */}
+              <SubItem label="Items List" to="/items" active={path === "/items"} />
 
-        {/* MENU */}
-        <div className="p-4 space-y-2">
+              {/* SUPPLIER */}
+              <SubItem label="Supplier" to="/suppliers" active={isSupplier} />
+            </DropdownItem>
 
-         <MenuItem
-  icon={<Home size={20} />}
-  label="Dashboard"
-  active={isDashboard}
-  collapsed={collapsed}
-  to="/dashboard"
-/>
-
-          <DropdownItem
-  icon={<Grid2x2 size={20} />}
-  label="Master"
-  dropdownRefs={dropdownRefs}   // ✅ ADD THIS
-  collapsed={collapsed}
-  open={collapsed ? openMenu.master : (openMenu.master || isMaster)} // 🔥 THIS LINE FIXES AUTO OPEN
-  onClick={() => toggleMenu("master")}
-  active={isMaster}                    // 🔥 THIS LINE FIXES BOLD
->
-            <SubItem label="Item" to="/items" active={isItem} />
-            <SubItem label="Supplier" to="/suppliers" active={isItem}/>
-          </DropdownItem>
-
-          {/*<DropdownItem
-            icon={<Box size={20} />}
-            label="Inventory"
-            collapsed={collapsed}
-            open={openMenu.inventory}
-            onClick={() => toggleMenu("inventory")}
-          >
-            <SubItem label="Stock" />
-            <SubItem label="Warehouse" />
-          </DropdownItem>
-
-          <DropdownItem
-            icon={<ShoppingCart size={20} />}
-            label="Sales"
-            collapsed={collapsed}
-            open={openMenu.sales}
-            onClick={() => toggleMenu("sales")}
-          >
-            <SubItem label="Orders" />
-            <SubItem label="Invoices" />
-          </DropdownItem>
-
-          <MenuItem
-            icon={<Truck size={20} />}
-            label="Delivery"
-            collapsed={collapsed}
-          />
-
-          <MenuItem
-            icon={<FileText size={20} />}
-            label="Summary"
-            collapsed={collapsed}
-          />
-
-          <MenuItem
-            icon={<Settings size={20} />}
-            label="Configuration"
-            collapsed={collapsed}
-          />*/}
-        </div>
-      </div>
-
-      {/* BOTTOM ROLE */}
-      <div className="px-4 pb-6">
-        {!collapsed && (
-          <div className="bg-gray-50 rounded-xl p-3">
-            <p className="text-sm font-semibold text-gray-700">
-              Role
-            </p>
-            <p className="text-sm text-gray-400">
-              Supervisor
-            </p>
           </div>
-        )}
-      </div>
+        </div>
 
-    </div>
+        {/* BOTTOM SECTION */}
+        <div className="px-3 sm:px-4 pb-4 sm:pb-6">
+          {!collapsed && (
+            <div className="bg-gray-50 rounded-xl p-3">
+              <p className="text-sm font-semibold text-gray-700">Role</p>
+              <p className="text-sm text-gray-400">Supervisor</p>
+            </div>
+          )}
+        </div>
+      </div>
+    </>
   );
 }
 
 /* ================= MENU ITEM ================= */
 
-function MenuItem({
-  icon,
-  label,
-  active,
-  collapsed,
-  to,
-}) {
+function MenuItem({ icon, label, active, collapsed, to }) {
   const content = (
     <div
       title={collapsed ? label : ""}
@@ -211,9 +186,7 @@ function MenuItem({
     >
       {icon}
       {!collapsed && (
-        <span className="text-sm font-medium">
-          {label}
-        </span>
+        <span className="text-sm font-medium">{label}</span>
       )}
     </div>
   );
@@ -228,64 +201,107 @@ function DropdownItem({
   label,
   collapsed,
   open,
-  onClick,
+  onOpen,
+  onClose,
+  onToggle,
   children,
   active,
-  dropdownRefs
+  dropdownRefs,
 }) {
-  return (
-    <div className="relative">
-      <div
-  onClick={(e) => {
-    e.stopPropagation();   // ✅ ADD THIS
-    onClick();
-  }}
-title={collapsed ? label : ""}
-        className={`
-  flex items-center ${collapsed ? "justify-center" : "justify-between px-4"}
-  h-11 rounded-lg cursor-pointer
-  transition
-  ${
-    active
-      ? "text-blue-600 bg-blue-50 font-bold"
-      : "text-gray-500 hover:bg-gray-100"
-  }
-`}
-      >
-       <div
-  className={`
-    flex items-center 
-    ${collapsed ? "" : "gap-3"}
-  `}
->
-          {icon}
+  const timeoutRef = useRef(null);
 
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => {
+        if (collapsed) {
+          clearTimeout(timeoutRef.current);
+          onOpen();
+        }
+      }}
+      onMouseLeave={() => {
+        if (collapsed) {
+          timeoutRef.current = setTimeout(() => {
+            onClose();
+          }, 200);
+        }
+      }}
+    >
+      {/* BUTTON */}
+      <div
+        className="dropdown-trigger"
+        onClick={(e) => {
+          e.stopPropagation();
+          if (collapsed) {
+            onOpen();
+          } else {
+            onToggle();
+          }
+        }}
+        title={collapsed ? label : ""}
+        className={`
+          flex items-center 
+          ${collapsed ? "justify-center" : "justify-between px-4"}
+          h-11 rounded-lg cursor-pointer
+          transition-all duration-200
+          ${
+            active
+              ? "text-blue-600 bg-blue-50"
+              : "text-gray-500 hover:bg-gray-100"
+          }
+          ${collapsed ? "hover:bg-blue-50" : ""}
+        `}
+      >
+        <div className={`flex items-center ${collapsed ? "" : "gap-3"}`}>
+          {icon}
           {!collapsed && (
-            <span className="text-sm font-medium">
-              {label}
-            </span>
+           <span
+  className={`text-sm ${
+    active ? "font-semibold" : "font-medium"
+  }`}
+>
+  {label}
+</span>
           )}
         </div>
 
         {!collapsed && (
           <ChevronDown
             size={16}
-            className={`transition ${
-              open ? "rotate-180" : ""
-            }`}
+            className={`transition ${open ? "rotate-180" : ""}`}
           />
         )}
       </div>
 
-     {open && (
-  <div
-    ref={(el) => (dropdownRefs.current[label] = el)}
-    onClick={(e) => e.stopPropagation()}
-  className={`
-    ${collapsed ? "absolute left-[72px] top-0 bg-white shadow-lg rounded-md p-2 z-50 min-w-[150px]" : "ml-11 mt-1"}
-    space-y-2
-  `}
->
+      {/* DROPDOWN */}
+      {open && (
+        <div
+          ref={(el) => (dropdownRefs.current[label] = el)}
+          onClick={(e) => e.stopPropagation()}
+          className={`
+            ${
+              collapsed
+                ? `
+                  absolute 
+                  left-[70px]
+                  top-0 
+                  bg-white 
+                  shadow-xl 
+                  rounded-lg 
+                  p-2 
+                  z-[9999]
+                  min-w-[180px]
+                  border border-gray-100
+                `
+                : "ml-11 mt-1"
+            }
+            space-y-2
+          `}
+        >
+          {collapsed && (
+            <div className="absolute -left-2 top-3 w-3 h-3 bg-white rotate-45 border-l border-t border-gray-100 pointer-events-none"></div>
+          )}
+
           {children}
         </div>
       )}
@@ -300,15 +316,17 @@ function SubItem({ label, to, active }) {
     <Link
       to={to}
       className={`
-  block text-sm px-2 py-1 rounded
-  ${
-    active
-      ? "text-blue-500 font-medium bg-blue-50"
-      : "text-gray-500 hover:text-blue-600"
-  }
-`}
+  flex items-center gap-2 text-sm px-3 py-2 rounded-md
+        transition-all duration-200
+        ${
+          active
+            ? "text-blue-600 font-semibold bg-blue-50"
+            : "text-gray-600 hover:bg-gray-100 hover:text-blue-600"
+        }
+      `}
     >
-      {label}
+      <span className="w-1.5 h-1.5 bg-gray-400 rounded-full"></span>
+<span>{label}</span>
     </Link>
   );
 }
