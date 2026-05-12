@@ -20,15 +20,22 @@ const data = [
 function PreviousOrdersChart() {
   return (
     <div
-      className="
+  className="
+        relative
+
+        w-full
+
         bg-white
         rounded-2xl
         shadow-sm
 
-        p-6
-        mt-6
+        p-3
+        sm:p-5
+        lg:p-6
+
+        overflow-hidden
       "
-    >
+>
 
       {/* TITLE */}
       <h2

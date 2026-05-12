@@ -1,195 +1,266 @@
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 
 function CalendarCard() {
+  const rows = [
+    {
+      day: "Sun",
+      date: "30",
+      pick: "5",
+      packed: "10",
+      delivered: "8",
+    },
+    {
+      day: "Mon",
+      date: "1",
+      pick: "4",
+      packed: "31",
+      delivered: "1",
+    },
+    {
+      day: "Tue",
+      date: "2",
+    },
+    {
+      day: "Wed",
+      date: "3",
+    },
+    {
+      day: "Thu",
+      date: "4",
+    },
+    {
+      day: "Fri",
+      date: "5",
+      active: true,
+    },
+    {
+      day: "Sat",
+      date: "6",
+    },
+  ];
+
   return (
     <div
-      className="
+  className="
+        relative
+
+        w-full
+
         bg-white
         rounded-2xl
         shadow-sm
 
-        p-5
+        p-3
+        sm:p-5
+        lg:p-6
 
-        min-h-[290px]
-
-        flex
-        flex-col
-        justify-between
+        overflow-hidden
       "
-    >
+>
+      {/* DATE */}
+      <h2
+        className="
+          text-[11px]
+          sm:text-sm
 
-      {/* TOP */}
-      <div>
+          font-semibold
+          text-[#9CA3AF]
+        "
+      >
+        April 11, 2021
+      </h2>
 
-        {/* DATE */}
-        <h2
+      {/* HEADER */}
+      <div
+        className="
+          mt-3
+
+          grid
+
+          grid-cols-[45px_20px_32px_40px_48px]
+          sm:grid-cols-[58px_24px_1fr_1fr_1fr]
+
+          items-center
+
+          gap-1
+        "
+      >
+        {/* TODAY */}
+        <h3
           className="
             text-[15px]
-            font-semibold
-            text-[#9CA3AF]
+            sm:text-[22px]
+
+            font-medium
+            text-[#111827]
           "
         >
-          April 11, 2021
-        </h2>
+          Today
+        </h3>
 
-        {/* CONTENT */}
-        <div className="mt-4 flex justify-between">
+        <div />
 
-          {/* LEFT SIDE */}
-          <div>
+        <span
+          className="
+            text-[7px]
+            sm:text-[11px]
 
-            {/* TODAY */}
-            <h3
+            text-center
+            text-[#6B7280]
+
+            truncate
+          "
+        >
+          Pick
+        </span>
+
+        <span
+          className="
+            text-[7px]
+            sm:text-[11px]
+
+            text-center
+            text-[#6B7280]
+
+            truncate
+          "
+        >
+          Packed
+        </span>
+
+        <span
+          className="
+            text-[7px]
+            sm:text-[11px]
+
+            text-center
+            text-[#6B7280]
+
+            truncate
+          "
+        >
+          Delivered
+        </span>
+      </div>
+
+      {/* ROWS */}
+      <div className="mt-4 space-y-4">
+        {rows.map((item, index) => (
+          <div
+            key={index}
+            className="
+              grid
+
+              grid-cols-[45px_20px_32px_40px_48px]
+              sm:grid-cols-[58px_24px_1fr_1fr_1fr]
+
+              items-center
+
+              gap-1
+            "
+          >
+            {/* DAY */}
+            <span
+              className={`
+                text-[12px]
+                sm:text-[16px]
+
+                ${
+                  item.active
+                    ? "font-bold text-[#111827]"
+                    : "text-[#374151]"
+                }
+              `}
+            >
+              {item.day}
+            </span>
+
+            {/* DATE */}
+            <span
+              className={`
+                text-[12px]
+                sm:text-[16px]
+
+                ${
+                  item.active
+                    ? "font-bold text-[#111827]"
+                    : "text-[#6B7280]"
+                }
+              `}
+            >
+              {item.date}
+            </span>
+
+            {/* PICK */}
+            <span
               className="
-                text-[30px]
-                font-medium
+                text-[9px]
+                sm:text-sm
+
+                text-center
                 text-[#111827]
               "
             >
-              Today
-            </h3>
+              {item.pick}
+            </span>
 
-            {/* DAYS */}
-            <div className="mt-6 space-y-5">
-
-              <div className="flex items-center gap-4">
-                <span className="text-[18px] text-[#111827]">
-                  Sun
-                </span>
-
-                <span className="text-[18px] text-[#6B7280]">
-                  30
-                </span>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <span className="text-[18px] text-[#111827]">
-                  Mon
-                </span>
-
-                <span className="text-[18px] text-[#6B7280]">
-                  1
-                </span>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <span className="text-[18px] text-[#111827]">
-                  Tue
-                </span>
-
-                <span className="text-[18px] text-[#6B7280]">
-                  2
-                </span>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <span className="text-[18px] text-[#111827]">
-                  Wed
-                </span>
-
-                <span className="text-[18px] text-[#6B7280]">
-                  3
-                </span>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <span className="text-[18px] font-bold text-[#111827]">
-                  Fri
-                </span>
-
-                <span className="text-[18px] font-bold text-[#111827]">
-                  5
-                </span>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <span className="text-[18px] text-[#111827]">
-                  Sat
-                </span>
-
-                <span className="text-[18px] text-[#6B7280]">
-                  6
-                </span>
-              </div>
-
-            </div>
-
-          </div>
-
-          {/* RIGHT SIDE */}
-          <div className="pr-2">
-
-            {/* HEADER */}
-            <div
+            {/* PACKED */}
+            <span
               className="
-                flex
-                items-center
-                gap-6
+                text-[9px]
+                sm:text-sm
 
-                text-[12px]
-                text-[#6B7280]
+                text-center
+                text-[#111827]
               "
             >
+              {item.packed}
+            </span>
 
-              <span>Pick List</span>
-              <span>Packed</span>
-              <span>Delivered</span>
+            {/* DELIVERED */}
+            <span
+              className="
+                text-[9px]
+                sm:text-sm
 
-            </div>
-
-            {/* VALUES */}
-            <div className="mt-8 space-y-7">
-
-              <div className="flex items-center gap-12">
-
-                <span className="text-[14px] text-[#111827]">
-                  5
-                </span>
-
-                <span className="text-[14px] text-[#111827]">
-                  10
-                </span>
-
-                <span className="text-[14px] text-[#111827]">
-                  8
-                </span>
-
-              </div>
-
-              <div className="flex items-center gap-12">
-
-                <span className="text-[14px] text-[#111827]">
-                  4
-                </span>
-
-                <span className="text-[14px] text-[#111827]">
-                  31
-                </span>
-
-                <span className="text-[14px] text-[#111827]">
-                  1
-                </span>
-
-              </div>
-
-            </div>
-
+                text-center
+                text-[#111827]
+              "
+            >
+              {item.delivered}
+            </span>
           </div>
-
-        </div>
-
+        ))}
       </div>
 
-      {/* BOTTOM BUTTONS */}
-      <div className="flex justify-end gap-2 mt-6">
+      {/* BUTTONS */}
+      <div
+  className="
+    flex
+    items-center
+    justify-end
 
+    gap-2
+
+    mt-4
+
+    w-full
+  "
+>
         {/* PREVIOUS */}
         <button
           className="
-            w-[32px]
-            h-[32px]
+            w-6
+            h-6
 
-            rounded-lg
+            sm:w-9
+            sm:h-9
+            
+            rounded-md
+            sm:rounded-lg
 
             bg-[#2563EB]
             hover:bg-[#1D4ED8]
@@ -197,24 +268,27 @@ function CalendarCard() {
             flex
             items-center
             justify-center
-            cursor-pointer
+
             transition-all
-            duration-300
           "
         >
           <ChevronLeft
-            size={16}
-            className="text-white"
+            size={12}
+            className="sm:w-4 sm:h-4 text-white"
           />
         </button>
 
         {/* NEXT */}
         <button
           className="
-            w-[32px]
-            h-[32px]
+            w-6
+            h-6
 
-            rounded-lg
+            sm:w-9
+            sm:h-9
+
+            rounded-md
+            sm:rounded-lg
 
             bg-[#2563EB]
             hover:bg-[#1D4ED8]
@@ -222,19 +296,16 @@ function CalendarCard() {
             flex
             items-center
             justify-center
-            cursor-pointer
+
             transition-all
-            duration-300
           "
         >
           <ChevronRight
-            size={16}
-            className="text-white"
+            size={12}
+            className="sm:w-4 sm:h-4 text-white"
           />
         </button>
-
       </div>
-
     </div>
   );
 }
