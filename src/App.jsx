@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import LoginPage from "./pages/LoginPage/LoginPage";
@@ -10,10 +10,8 @@ import WMSNavbar from "./pages/Navbar/WMSNavbar";
 import Sidebar from "./components/wms sidebar/Sidebar";
 import Layout from "./components/layouts/Layout";
 import Dashboard from "./pages/Dashboard";
-import ItemsPage from "./pages/MasterItems/ItemsPage";
-import CreateItem from "./pages/MasterItems/CreateItem";
-import Supplier from "./pages/masterSupplier/Supplier";
-import CreateSupplier from "./pages/masterSupplier/CreateSupplier";
+import ItemsPage from "./pages/ItemsPage";
+import CreateItem from "./pages/CreateItem";
 
 // Website
 import Footer from "./components/layouts/Footer";
@@ -57,15 +55,10 @@ function Home() {
 }
 
 
-//  WMS LAYOUT (MERGED + FIXED)
+// ✅ WMS LAYOUT (CLEAN STRUCTURE)
 function WMSLayout({ children, collapsed, setCollapsed }) {
   return (
-    <div className="h-screen bg-gray-100">
-
-      {/* NAVBAR */}
-      <div className="fixed top-0 left-0 right-0 h-[70px] bg-white z-50 shadow">
-        <WMSNavbar setCollapsed={setCollapsed} />
-      </div>
+    <div className="flex">
 
       {/* SIDEBAR */}
       <div
@@ -75,24 +68,45 @@ function WMSLayout({ children, collapsed, setCollapsed }) {
         <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
       </div>
 
-     
-      <div
-        className={`
-          pt-[70px]
-          ${collapsed ? "pl-[70px]" : "pl-[260px]"}
-          h-full overflow-auto
-        `}
-      >
+      {/* OVERLAY (MOBILE) */}
+      {!collapsed && (
+        <div
+          className="fixed inset-0 bg-transparent z-40 md:hidden"
+          onClick={() => setCollapsed(true)}
+        />
+      )}
+
+      {/* CONTENT */}
+      <div className="flex-1 w-full md:ml-[260px]">
+
+        {/* ✅ NAVBAR (DESKTOP) */}
+        <div className="hidden md:block">
+          <WMSNavbar />
+        </div>
+
+        {/* ✅ MOBILE HEADER */}
+        <div className="md:hidden flex items-center p-3 bg-white shadow-sm">
+          <button
+            className="p-2 text-xl"
+            onClick={() => setCollapsed(false)}
+          >
+            ☰
+          </button>
+          <h1 className="ml-3 font-semibold">Menu</h1>
+        </div>
+
+        {/* PAGE CONTENT */}
         <div className="p-4">
           {children}
         </div>
-      </div>
 
+      </div>
     </div>
   );
 }
 
-//  MAIN APP
+
+// ✅ MAIN APP
 function App() {
   const [collapsed, setCollapsed] = useState(true);
 
@@ -145,22 +159,6 @@ function App() {
           element={
             <WMSLayout collapsed={collapsed} setCollapsed={setCollapsed}>
               <CreateItem />
-            </WMSLayout>
-          }
-        />
-        <Route
-          path="/suppliers"
-          element={
-            <WMSLayout collapsed={collapsed} setCollapsed={setCollapsed}>
-              <Supplier />
-            </WMSLayout>
-          }
-        />
-        <Route
-          path="/create-supplier"
-          element={
-            <WMSLayout collapsed={collapsed} setCollapsed={setCollapsed}>
-              <CreateSupplier />
             </WMSLayout>
           }
         />
