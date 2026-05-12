@@ -4,14 +4,22 @@ import SparkLine from "./SparkLine";
 function OrdersCard() {
   return (
     <div
-      className="
+  className="
+        relative
+
+        w-full
+
         bg-white
         rounded-2xl
         shadow-sm
-        p-6
-        min-h-[260px]
+
+        p-3
+        sm:p-5
+        lg:p-6
+
+        overflow-hidden
       "
-    >
+>
 
       <h3 className="text-[20px] font-semibold text-[#111827]">
         Total Orders
@@ -26,22 +34,42 @@ function OrdersCard() {
         {/* LEFT */}
         <div>
 
-          <h1 className="text-[48px] font-bold text-[#111827]">
+          <h1 className="
+              text-[34px]
+              sm:text-[48px]
+
+              font-bold
+              text-[#111827]
+
+              leading-none
+            ">
             25.7K
           </h1>
 
           <div className="flex items-center gap-2 mt-3">
 
             <TrendingUp
-              size={18}
+              size={14}
               className="text-green-500"
             />
 
-            <span className="text-green-500 text-[14px] font-medium">
+            <span className="
+                text-green-500
+
+                text-[11px]
+                sm:text-[14px]
+
+                font-medium
+              ">
               6%
             </span>
 
-            <span className="text-[#9CA3AF] text-[13px]">
+            <span className="
+                text-[#9CA3AF]
+
+                text-[10px]
+                sm:text-[13px]
+              ">
               vs last 7 days
             </span>
 
@@ -50,7 +78,15 @@ function OrdersCard() {
         </div>
 
         {/* RIGHT GRAPH */}
-        <div className="mt-6">
+        <div className="
+            w-[90px]
+            sm:w-[140px]
+
+            flex
+            justify-end
+
+            overflow-hidden
+          ">
           <SparkLine />
         </div>
 

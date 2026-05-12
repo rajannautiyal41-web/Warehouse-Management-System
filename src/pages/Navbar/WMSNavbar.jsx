@@ -1,26 +1,38 @@
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoChevronDown } from "react-icons/io5";
 
-function WMSNavbar({ setCollapsed }) {
+function WMSNavbar({
+  sidebarOpen,
+  setSidebarOpen,
+}) {
   return (
     <header
-  className="
-    bg-[#0B3FCF]
-    shadow-md
+      className="
+        fixed
+        top-0
+        left-0
+        right-0
 
-    fixed top-0 right-0
-    left-0 
+        h-[72px]
 
-    z-50
-  "
->
+        bg-[#0B3FCF]
+
+        shadow-md
+
+        z-50
+      "
+    >
       <div
         className="
-          h-[64px] sm:h-[68px] lg:h-[72px]
+          h-full
 
-          px-3 sm:px-6 lg:px-8 xl:px-12 2xl:px-16
+          px-4
+          sm:px-6
+          lg:px-8
 
-          flex items-center justify-between
+          flex
+          items-center
+          justify-between
         "
       >
         {/* LEFT SIDE */}
@@ -31,11 +43,14 @@ function WMSNavbar({ setCollapsed }) {
             gap-2 sm:gap-4 lg:gap-10 xl:gap-16   /* ✅ improved spacing */
           "
         >
-
           {/* LOGO */}
           <h1
             className="
               text-white
+
+              text-[28px]
+              sm:text-[32px]
+
               font-bold
 
               text-[20px]
@@ -47,30 +62,30 @@ function WMSNavbar({ setCollapsed }) {
               tracking-[2px] sm:tracking-[3px]
 
               whitespace-nowrap   /* ✅ prevents breaking */
+              tracking-[3px]
             "
           >
             WMS
           </h1>
 
-          {/* MENU ICON */}
+          {/* TOGGLE BUTTON */}
           <button
-            onClick={() => setCollapsed(prev => !prev)}
+            onClick={() =>
+              setSidebarOpen(!sidebarOpen)
+            }
             className="
               text-white
 
-              text-[22px]
-              sm:text-[24px]
-              lg:text-[26px]
-              xl:text-[28px]
+              text-[28px]
 
-              ml-1 sm:ml-2 lg:ml-4   
-
-              flex items-center justify-center
+              flex
+              items-center
+              justify-center
 
               hover:opacity-80
-              transition-all duration-300
 
-              cursor-pointer
+              transition-all
+              duration-300
             "
           >
             <RxHamburgerMenu />
@@ -84,20 +99,22 @@ function WMSNavbar({ setCollapsed }) {
 
             rounded-full
 
-            px-2 sm:px-3 lg:px-4
-            py-1.5 sm:py-2
+            pl-2
+            pr-3
+            py-1.5
 
-            flex items-center
+            flex
+            items-center
 
-            gap-2 sm:gap-3 lg:gap-4
+            gap-2
+            sm:gap-3
 
             shadow-sm
 
             min-w-fit   /* ✅ prevents shrink issue */
           "
         >
-
-          {/* USER IMAGE */}
+          {/* IMAGE */}
           <img
             src="https://i.pravatar.cc/100"
             alt="Profile"
@@ -107,13 +124,13 @@ function WMSNavbar({ setCollapsed }) {
               lg:w-[40px] lg:h-[40px]
 
               rounded-full
+
               object-cover
             "
           />
 
           {/* USER INFO */}
           <div className="hidden sm:block leading-tight">
-
             <h3
               className="
                 text-[#1F2937]
@@ -138,7 +155,6 @@ function WMSNavbar({ setCollapsed }) {
             >
               PT. Aman Sentosa
             </p>
-
           </div>
 
           {/* DROPDOWN */}
@@ -149,12 +165,13 @@ function WMSNavbar({ setCollapsed }) {
               text-[16px]
               sm:text-[18px]
 
-              cursor-pointer
+              flex
+              items-center
+              justify-center
             "
           >
             <IoChevronDown />
           </button>
-
         </div>
       </div>
     </header>

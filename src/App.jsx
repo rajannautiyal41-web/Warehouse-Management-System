@@ -15,19 +15,53 @@ import CreateItem from "./pages/CreateItem";
 
 // Website
 import Footer from "./components/layouts/Footer";
+
 import Testimonials from "./components/sections/Testimonials";
+
 import Whitepaceend from "./components/sections/Whitespaceend";
+
 import Hero from "./components/sections/Hero";
+
 import Project from "./components/sections/Projects";
+
 import WorkTogether from "./components/sections/WorkTogether";
+
 import Extension from "./components/sections/Extension";
+
 import Customize from "./components/sections/Customize";
+
 import Pricing from "./components/sections/Pricing";
+
 import CTA from "./components/sections/CTA";
+
 import Data from "./components/sections/Data";
+
 import Navbar from "./components/layouts/Navbar";
+
 import Work from "./components/sections/Work";
+
 import Sponsors from "./components/sections/Sponsors";
+
+import Space from "./pages/Space/Space";
+
+import Rack from "./pages/Space/Rack/Rack";
+
+import Slot from "./pages/Space/Slot/Slot";
+
+import CreateSpace from "./pages/Space/CreateSpace/CreateSpace";
+
+import Shipment from "./pages/Dashboard/Shipment/Shipment";
+
+import CreateShipment from "./pages/Dashboard/Shipment/CreateShipment";
+
+import ItemsPage from "./pages/MasterItems/ItemsPage";
+
+import UserPage from "./pages/User/UserPage";
+
+import CreateUser from "./pages/User/CreateUser";
+/* ================================================= */
+/* HOME PAGE */
+/* ================================================= */
 
 import "./App.css";
 
@@ -37,76 +71,73 @@ function Home() {
   return (
     <>
       <Navbar />
+
       <Hero />
+
       <Project />
+
       <WorkTogether />
+
       <Extension />
+
       <Customize />
+
       <Pricing />
+
       <CTA />
+
       <Data />
+
       <Sponsors />
+
       <Work />
+
       <Testimonials />
+
       <Whitepaceend />
+
       <Footer />
     </>
   );
 }
 
+/* ================================================= */
+/* DASHBOARD LAYOUT */
+/* ================================================= */
 
-// ✅ WMS LAYOUT (CLEAN STRUCTURE)
-function WMSLayout({ children, collapsed, setCollapsed }) {
+function DashboardLayout() {
+  const [sidebarOpen, setSidebarOpen] =
+    useState(false);
+
   return (
-    <div className="flex">
-
+    <div className="flex bg-[#F5F6FA]">
       {/* SIDEBAR */}
-      <div
-        className={`fixed top-[70px] bottom-0 z-40 bg-white border-r transition-all duration-300
-        ${collapsed ? "w-[70px]" : "w-[260px]"}`}
-      >
-        <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
-      </div>
+      <WMSSidebar
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+      />
 
-      {/* OVERLAY (MOBILE) */}
-      {!collapsed && (
-        <div
-          className="fixed inset-0 bg-transparent z-40 md:hidden"
-          onClick={() => setCollapsed(true)}
+      {/* MAIN CONTENT */}
+      <div className="flex-1 md:ml-[260px]">
+        {/* NAVBAR */}
+        <WMSNavbar
+          sidebarOpen={sidebarOpen}
+          setSidebarOpen={setSidebarOpen}
         />
-      )}
 
-      {/* CONTENT */}
-      <div className="flex-1 w-full md:ml-[260px]">
-
-        {/* ✅ NAVBAR (DESKTOP) */}
-        <div className="hidden md:block">
-          <WMSNavbar />
+        {/* DASHBOARD PAGE */}
+        <div className="pt-[90px] p-5">
+          <Dashboard />
         </div>
-
-        {/* ✅ MOBILE HEADER */}
-        <div className="md:hidden flex items-center p-3 bg-white shadow-sm">
-          <button
-            className="p-2 text-xl"
-            onClick={() => setCollapsed(false)}
-          >
-            ☰
-          </button>
-          <h1 className="ml-3 font-semibold">Menu</h1>
-        </div>
-
-        {/* PAGE CONTENT */}
-        <div className="p-4">
-          {children}
-        </div>
-
       </div>
     </div>
   );
 }
 
+/* ================================================= */
+/* APP */
+/* ================================================= */
 
-// ✅ MAIN APP
 function App() {
   const [collapsed, setCollapsed] = useState(true);
 
@@ -128,14 +159,29 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* HOME */}
+        <Route
+          path="/"
+          element={<Home />}
+        />
 
-        {/* WEBSITE */}
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
+        {/* AUTH */}
+        <Route
+          path="/login"
+          element={<LoginPage />}
+        />
 
-        {/* WMS ROUTES */}
+        <Route
+          path="/signup"
+          element={<SignUp />}
+        />
+
+        <Route
+          path="/forgot-password"
+          element={<ForgotPassword />}
+        />
+
+        {/* DASHBOARD */}
         <Route
           path="/dashboard"
           element={
@@ -163,9 +209,46 @@ function App() {
           }
         />
 
+        <Route
+          path="/space"
+          element={<Space />}
+        />
+        <Route
+          path="/rack"
+          element={<Rack />}
+        />
+        <Route
+          path="/slot"
+          element={<Slot />}
+        />
+        <Route
+          path="/createspace"
+          element={<CreateSpace />}
+        />
+        <Route
+          path="/shipment"
+          element={<Shipment />}
+        />
+        <Route
+          path="/shipment/create"
+          element={<CreateShipment />}
+        />
+        <Route path="/items"
+          element={<ItemsPage />}
+        />
+        <Route
+          path="/users"
+          element={<UserPage />}
+        />
+
+        <Route
+          path="/create-user"
+          element={<CreateUser />}
+        />
       </Routes>
     </BrowserRouter>
   );
 }
+
 
 export default App;
